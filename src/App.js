@@ -1,4 +1,8 @@
 import React, { useState } from 'react';
+import ReactDOM from 'react-dom';
+import { Button } from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 const api = {
   key: "6c91341b4c2a841ddae2e208e7da2de4",
   base: "https://api.openweathermap.org/data/2.5/"
@@ -60,8 +64,17 @@ function App() {
         </div>
         ) : ('')}
       </main>
+      // <Button variant="primary" type="button" onclick ={() => 'ReactDOM.render(<Loginform />, document.getElementById("loginform"));'}>
+      //   Login
+      // </Button>
     </div>
   );
 }
 
 export default App;
+
+// function makeLoginVisi() {
+//   console.log("working");
+//   ReactDOM.render(<Loginform />, document.getElementById('loginform'));
+//   //{this.state.nextActive = true};
+// }
