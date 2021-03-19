@@ -1,22 +1,42 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap");
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+}
+
 * {
-  margin: 0;
-  padding: 0;
   box-sizing: border-box;
 }
 
 body {
-  font-family: 'montseratt', sans-serif;
+  margin: 0;
+  font-family: "Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+    "Helvetica Neue", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  
 }
-
 .app {
-  background-image: url('./assets/clear-iphone.jpg');
+  background-image: url('./assets/rainbackground.jpg');
   background-size: cover;
-  background-position: bottom;
+  background-position: top center;
   transition: 0.4 ease;
+
 }
 
+.app-wrap{
+  display:flex;
+  flex-direction: column;
+  min-height: 100vh;
+
+}
 .app.warm {
-  background-image: url('./assets/clear-iphone.jpg');
+  background-image: url('./assets/rainbackground.jpg');
+ 
 }
 
 main {
@@ -27,13 +47,16 @@ main {
 
 .search-box {
   width: 100%;
-  margin: 0 0 75px;
+  padding: 30px 15px 15px;
+  align-items: center;
+  
 }
 
 .search-box .search-bar {
   display: block;
   width: 100%;
   padding: 15px;
+  align-items: center;
 
   appearance: none;
   background: none;
@@ -41,13 +64,14 @@ main {
   outline: none;
 
   background-color: rgba(255, 255, 255, 0.5);
-  border-radius: 0px 0px 16px 16px;
+  border-radius: 16px 16px 16px 16px;
   margin-top: -25px;
 
   box-shadow: 0px 5px rgba(0, 0, 0, 0.2);
   
   color: #313131;
   font-size: 20px;
+  font-family:"Poppins";
 
   transition: 0.4s ease;
 }
@@ -57,11 +81,13 @@ main {
 }
 
 .location-box .location {
+  padding-top: 0.1em;
   color: #FFF;
-  font-size: 32px;
+  font-size: 40px;
+  padding-bottom: 0.1em;
   font-weight: 500;
   text-align: center;
-  text-shadow: 3px 3px rgba(50, 50, 70, 0.5);
+  /* text-shadow: 3px 3px rgba(50, 50, 70, 0.5); */
 }
 
 .location-box .date {
@@ -75,29 +101,70 @@ main {
 
 .weather-box {
   text-align: center;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 16px;
+  min-height: 45vh;
+  
+}
+
+.tempIcon{
+  width: 140px;
+  /* float:left; */
+  padding-left:1.5em;
+  padding-top:0.2em;
+  font-family: "Poppins";
+  color: #FFF;
+  display:inline-block;
+
+}
+
+.tempIconSize{
+  width: 5.2em;
+  height: 5.2em;
+  margin:0em;
+  padding: 0em;
+  display:inline;
+}
+
+.minMax{
+  display: inline-block;
+  position: relative;
+  margin-top: -10px;
+  font-size: 15px;
 }
 
 .weather-box .temp {
-  position: relative;
-  display: inline-block;
-  margin: 30px auto;
-  background-color: rgba(255, 255, 255, 0.2);
-  border-radius: 16px;
-
-  padding: 15px 25px;
-
+  width: 135px;
+  float:right;
+  margin:5px 25px;
+  /* padding-right: 0.2em; */
+  /* display: inline-block; */
   color: #FFF;
-  font-size: 102px;
-  font-weight: 900;
-
-  text-shadow: 3px 6px rgba(50, 50, 70, 0.5);
+  font-size: 55px;
+  font-weight:400;
   text-align: center;
-  box-shadow: 3px 6px rgba(0, 0, 0, 0.2);
+  /* text-shadow: 3px 3px rgba(50, 50, 70, 0.5); */
+  
 }
 
-.weather-box .weather {
+
+.weather-box .description {
   color: #FFF;
-  font-size: 48px;
-  font-weight: 700;
-  text-shadow: 3px 3px rgba(50, 50, 70, 0.5);
+  /* display: block; */
+  text-align: center;
+  font-style: italic;
+  font-size: 20px;
+  font-weight: 100;
+}
+
+.sportBox{
+  width:100%;
+  height: 250px;
+  background-color: rgba(0, 0, 0, 0.3);
+  position:absolute; 
+  bottom: 0;
+  margin-left:-7%;
+  clip-path: url(#wave);
+  z-index: 1;
+ 
 }
