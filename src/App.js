@@ -1,27 +1,34 @@
-import React, { useState } from 'react';
 import thunderstorm from './weatherIcons/thunderstorm.svg'
 import sunny from './weatherIcons/sunny.svg'
 import snow from './weatherIcons/snowflake.svg'
 import rain from './weatherIcons/rain.svg'
 import haze from './weatherIcons/haze.svg'
 import cloud from './weatherIcons/cloud.svg'
-import PullDown from 'react-z-pull-down'
+import arrow from './assets/arrow.png';
+import football from './sportIcons/football.png';
+import swim from './sportIcons/swim.png';
+import basket from './sportIcons/basketball.png';
+import cycle from './sportIcons/cycle.png';
+import run from './sportIcons/run.png';
+import skate from './sportIcons/skate.png';
+import sledge from './sportIcons/sledge.png';
+import ski from './sportIcons/ski.png';
+import snowboard from './sportIcons/snow.png';
+import tennis from './sportIcons/tennis.png';
+import volley from './sportIcons/volley.png';
+import React, { useState } from 'react';
+
 
 const api = {
   key: "6c91341b4c2a841ddae2e208e7da2de4",
-  // base: "https://api.openweathermap.org/data/2.5/"
   base: "https://api.openweathermap.org/data/2.5/"
 }
-
-
-
-
 
 
 function App() {
   const [query, setQuery] = useState('');
   const [weather, setWeather] = useState({});
-
+  const [isOpen, setIsOpen] = useState(false);
 
   const search = evt => {
     if (evt.key === "Enter") {
@@ -37,25 +44,6 @@ function App() {
         ;
     }
   }
-
-
-
-  /*container which holds the blob*/
-  // const TopContainer = styled.div`
-  //     width:100%;
-  //     height: 200px;
-  //     background: #000000;
-  //     position:absolute; 
-  //     bottom: 0;
-  //     margin-left:-7%;
-  //     clip-path: url(#wave);
-
-  // `;
-
-
-
-
-
 
   // const dateBuilder = (d) => {
   //   let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
@@ -73,6 +61,7 @@ function App() {
 
     <div className={(typeof weather.main != "undefined") ? ((weather.main.temp > 16) ? 'app warm' : 'app') : 'app'}>
       <main>
+        {/* -------------------------------------------- SEARCH BOX ------------------------------------------------------ */}
         <div className="search-box">
           <input
             type="text"
@@ -83,6 +72,8 @@ function App() {
             onKeyPress={search}
           />
         </div>
+
+        {/* --------------------------- EVERYTHING BELOW IS DISPLAYED ONLY IF CITY IS SELECTED---------------------------------------- */}
         {(typeof weather.main != "undefined") ? (
           <div>
             {/* div containing the city and country  */}
@@ -90,9 +81,9 @@ function App() {
               <div className="location">{weather.name}, {weather.sys.country}</div>
             </div>
 
-            {/* div containing all weather information */}
+            {/* -------------------------------------------- WEATHER BOX ------------------------------------------------------ */}
             <div className="weather-box">
-              {/* image icon rendering  */}
+
               <div className="tempIcon" >
                 {(weather.weather[0].id > 199 && weather.weather[0].id < 232) ? (
                   <img className="tempIconSize"
@@ -127,22 +118,165 @@ function App() {
                   />
                 ) : ('')}
 
-                {/* div holding min and max of todays date  */}
+                {/* ----------------------------------------- TODAYS HIGH/LOW  ----------------------------------------- */}
                 <div className="minMax">H:{Math.round(weather.main.temp_max)} L:{Math.round(weather.main.temp_min)} </div>
-
               </div>
 
-              {/* div holding todays temp */}
+              {/* ------------------------------------------- TODAYS TEMP  ------------------------------------------------ */}
               <div className="temp">
                 {Math.round(weather.main.temp)}°C
                 {/* div holding todays weather description */}
                 <div className="description">{weather.weather[0].main}</div>
               </div>
+              <div className="hourlyWeather">Hourly weather</div>
+
+              {/* ------------------------------------  TODAYS TOP SPORT -------------------------------------------------- */}
+              <div className="topSport">
+                <p className="topHeading">Top Suggested Sport</p>
+                {/* top sport displayed based on todays weather  */}
+                <div className="topIconContainer">
+                  {(weather.weather[0].main.includes('Clouds') || weather.weather[0].main.includes('Haze')) ? (
+                    <div className="sportList">
+                      <img className="topIcon"
+                        src={football}
+                        alt='Icon'
+                      /> <p className="topName">Football</p>
+                    </div>
+                  ) : (weather.weather[0].main.includes('Clear')) ? (
+                    <div className="sportList">
+                      <img className="topIcon"
+                        src={swim}
+                        alt='Icon'
+                      /> <p className="topName">Swimming</p>
+                    </div>
+                  ) : (weather.weather[0].main.includes('Snow')) ? (
+                    <div className="sportList">
+                      <p className="topName"><img className="topIcon"
+                        src={ski}
+                        alt='Icon'
+                      /> Skiing</p>
+                    </div>
+                  ) : (weather.weather[0].main.includes('Rain') || weather.weather[0].main.includes('Thunderstorm') || weather.weather[0].main.includes('Drizzle')) ? (
+                    <div className="sportList">
+                      <p className="topName"><img className="topIcon"
+                        src={cycle}
+                        alt='Icon'
+                      /> Cycle</p>
+                    </div>
+                  ) : ('')}
+                </div>
+              </div>
             </div>
 
-            <div className="sportBox">
-              <PullDown />
-              <div>Other Suggested Sports</div>
+            {/* ------------------------------------------- BOTTOM CONTAINER  ------------------------------------------------ */}
+            <div className="bottomContainer">
+              {/* daily weather displayed only when toggle is off*/}
+              {!isOpen && <div className="weekForecast">Daily Weather</div>}
+
+              {/* ------------------------------------------ OTHER SPORT SUGGESTIONS ------------------------------------------------ */}
+              <div className="suggestions">
+                {!isOpen && <button className="toggle" onClick={() => setIsOpen(!isOpen)}><img className="arrowImage" src={arrow} alt="arrow" /></button>}
+                {!isOpen && <div className="otherTitle">Other suggested Sports</div>}
+                {isOpen && <button className="toggleDown" onClick={() => setIsOpen(!isOpen)}><img className="arrowDown" src={arrow} alt="arrow" /></button>}
+                {isOpen && <div className="content">Other suggested Sports</div>}
+
+                {/* number 2 */}
+                {isOpen && <div>
+                  {(weather.weather[0].main.includes('Clouds') || weather.weather[0].main.includes('Haze')) ? (
+                    <div className="sportList">
+                      <p className="sportName"><img className="sportIcon"
+                        src={basket}
+                        alt='Icon'
+                      /> Basketball</p>
+                    </div>
+                  ) : (weather.weather[0].main.includes('Clear')) ? (
+                    <div className="sportList">
+                      <p className="sportName"><img className="sportIcon"
+                        src={volley}
+                        alt='Icon'
+                      /> Volleyball</p>
+                    </div>
+                  ) : (weather.weather[0].main.includes('Snow')) ? (
+                    <div className="sportList">
+                      <p className="sportName"><img className="sportIcon"
+                        src={snowboard}
+                        alt='Icon'
+                      /> Snowboarding</p>
+                    </div>
+                  ) : (weather.weather[0].main.includes('Rain') || weather.weather[0].main.includes('Thunderstorm') || weather.weather[0].main.includes('Drizzle')) ? (
+                    <div className="sportList">
+                      <p className="sportName"><img className="sportIcon"
+                        src={football}
+                        alt='Icon'
+                      /> Indoor Football</p>
+                    </div>
+                  ) : ('')}
+                </div>}
+                {/* Number 3 */}
+                {isOpen && <div>
+                  {(weather.weather[0].main.includes('Clouds') || weather.weather[0].main.includes('Haze')) ? (
+                    <div className="sportList">
+                      <p className="sportName"><img className="sportIcon"
+                        src={tennis}
+                        alt='Icon'
+                      /> Tennis</p>
+                    </div>
+                  ) : (weather.weather[0].main.includes('Clear')) ? (
+                    <div className="sportList">
+                      <p className="sportName"><img className="sportIcon"
+                        src={football}
+                        alt='Icon'
+                      /> Football</p>
+                    </div>
+                  ) : (weather.weather[0].main.includes('Snow')) ? (
+                    <div className="sportList">
+                      <p className="sportName"><img className="sportIcon"
+                        src={skate}
+                        alt='Icon'
+                      /> Ice Skating</p>
+                    </div>
+                  ) : (weather.weather[0].main.includes('Rain') || weather.weather[0].main.includes('Thunderstorm') || weather.weather[0].main.includes('Drizzle')) ? (
+                    <div className="sportList">
+                      <p className="sportName"><img className="sportIcon"
+                        src={volley}
+                        alt='Icon'
+                      /> Indoor Volleyball</p>
+                    </div>
+                  ) : ('')}
+                </div>}
+                {/* Number 4 */}
+                {isOpen && <div>
+                  {(weather.weather[0].main.includes('Clouds') || weather.weather[0].main.includes('Haze')) ? (
+                    <div className="sportList">
+                      <p className="sportName"><img className="sportIcon"
+                        src={run}
+                        alt='Icon'
+                      /> Running</p>
+                    </div>
+                  ) : (weather.weather[0].main.includes('Clear')) ? (
+                    <div className="sportList">
+                      <p className="sportName"><img className="sportIcon"
+                        src={tennis}
+                        alt='Icon'
+                      /> Tennis</p>
+                    </div>
+                  ) : (weather.weather[0].main.includes('Snow')) ? (
+                    <div className="sportList">
+                      <p className="sportName"><img className="sportIcon"
+                        src={sledge}
+                        alt='Icon'
+                      /> Sledging</p>
+                    </div>
+                  ) : (weather.weather[0].main.includes('Rain') || weather.weather[0].main.includes('Thunderstorm') || weather.weather[0].main.includes('Drizzle')) ? (
+                    <div className="sportList">
+                      <p className="sportName"><img className="sportIcon"
+                        src={run}
+                        alt='Icon'
+                      /> Running</p>
+                    </div>
+                  ) : ('')}
+                </div>}
+              </div>
             </div>
             <svg>
               <clipPath id="wave" clipPathUnits="objectBoundingBox">
