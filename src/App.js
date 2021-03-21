@@ -29,6 +29,7 @@ function App() {
   const [query, setQuery] = useState('');
   const [weather, setWeather] = useState({});
   const [isOpen, setIsOpen] = useState(false);
+  // const [hourly, setHourly] = useState({});
 
   const search = evt => {
     if (evt.key === "Enter") {
@@ -38,12 +39,23 @@ function App() {
           setWeather(result);
           setQuery('');
           console.log(result);
-        })
-
-
-        ;
+        });
+      //   if (typeof weather.main != "undefined") {
+      //     var lat = weather.coord.lat
+      //     var lon = weather.coord.lon
+      //     fetch(`${api.base}onecall?lat=${lat}&lon=${lon}&exclude=minutlely,alerts&units=metric&APPID=${api.key}`)
+      //       .then(res => res.json())
+      //       .then(hourlyResult => {
+      //         setHourly(hourlyResult);
+      //         setQuery('');
+      //         console.log(hourlyResult);
+      //       });
+      //   }
     }
+
   }
+
+
 
   // const dateBuilder = (d) => {
   //   let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
@@ -128,40 +140,42 @@ function App() {
                 {/* div holding todays weather description */}
                 <div className="description">{weather.weather[0].main}</div>
               </div>
+
+              {/* ------------------------------------------- HOURLY TEMP  ------------------------------------------------ */}
               <div className="hourlyWeather">Hourly weather</div>
 
               {/* ------------------------------------  TODAYS TOP SPORT -------------------------------------------------- */}
-              <div className="topSport">
-                <p className="topHeading">Top Suggested Sport</p>
+              <div className="topSportContainer">
+                <p className="topSportHeading">Top Suggested Sport</p>
                 {/* top sport displayed based on todays weather  */}
                 <div className="topIconContainer">
                   {(weather.weather[0].main.includes('Clouds') || weather.weather[0].main.includes('Haze')) ? (
                     <div className="sportList">
-                      <img className="topIcon"
+                      <img className="topSportIcon"
                         src={football}
                         alt='Icon'
-                      /> <p className="topName">Football</p>
+                      /> <p className="topSportName">Football</p>
                     </div>
                   ) : (weather.weather[0].main.includes('Clear')) ? (
                     <div className="sportList">
-                      <img className="topIcon"
+                      <img className="topSportIcon"
                         src={swim}
                         alt='Icon'
-                      /> <p className="topName">Swimming</p>
+                      /> <p className="topSportName">Swimming</p>
                     </div>
                   ) : (weather.weather[0].main.includes('Snow')) ? (
                     <div className="sportList">
-                      <p className="topName"><img className="topIcon"
+                      <img className="topSportIcon"
                         src={ski}
                         alt='Icon'
-                      /> Skiing</p>
+                      /><p className="topSportName">Skiing</p>
                     </div>
                   ) : (weather.weather[0].main.includes('Rain') || weather.weather[0].main.includes('Thunderstorm') || weather.weather[0].main.includes('Drizzle')) ? (
                     <div className="sportList">
-                      <p className="topName"><img className="topIcon"
+                      <img className="topSportIcon"
                         src={cycle}
                         alt='Icon'
-                      /> Cycle</p>
+                      /> <p className="topSportName">Cycle</p>
                     </div>
                   ) : ('')}
                 </div>
@@ -175,10 +189,10 @@ function App() {
 
               {/* ------------------------------------------ OTHER SPORT SUGGESTIONS ------------------------------------------------ */}
               <div className="suggestions">
-                {!isOpen && <button className="toggle" onClick={() => setIsOpen(!isOpen)}><img className="arrowImage" src={arrow} alt="arrow" /></button>}
-                {!isOpen && <div className="otherTitle">Other suggested Sports</div>}
+                {!isOpen && <button className="toggleUp" onClick={() => setIsOpen(!isOpen)}><img className="arrowUp" src={arrow} alt="arrow" /></button>}
+                {!isOpen && <div className="toggleHeadingBottom">Other suggested Sports</div>}
                 {isOpen && <button className="toggleDown" onClick={() => setIsOpen(!isOpen)}><img className="arrowDown" src={arrow} alt="arrow" /></button>}
-                {isOpen && <div className="content">Other suggested Sports</div>}
+                {isOpen && <div className="toggleHeadingTop">Other suggested Sports</div>}
 
                 {/* number 2 */}
                 {isOpen && <div>
@@ -280,7 +294,7 @@ function App() {
             </div>
             <svg>
               <clipPath id="wave" clipPathUnits="objectBoundingBox">
-                <path class="st0" d="M1,0c0,0-0.3,0.1-0.5,0.1S0.3,0,0,0.1V1h1L1,0z" />
+                <path className="st0" d="M1,0c0,0-0.3,0.1-0.5,0.1S0.3,0,0,0.1V1h1L1,0z" />
               </clipPath>
             </svg>
 
