@@ -6,7 +6,7 @@ import * as IoIcons from 'react-icons/io';
 export const SidebarData = [
   { // per each side bar item !!!1
     title: "Home",
-    path: "/",
+    path: "/Home",
     icon: <AiIcons.AiFillHome />,
     cName: "nav-text"
   },

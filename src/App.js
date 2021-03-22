@@ -10,12 +10,21 @@ function App() {
     <Router>
       <Navbar />
       <Switch>
-        <Route path='/Home' exact components={Home} />
-        <Route path='/reports' exact components={Reports} />
-        <Route path='/products' exact components={Products} />
+        <Route path='/home' exact components={Home} />
+        <Route path='/reports' components={Reports} />
+        <Route path='/products' components={Products} />
       </Switch>
     </Router>
   );
 }
+function home() {
+  return <img src="https://evolutionfinancialplanning.co.uk/wp-content/uploads/2014/08/back-to-school.jpg" alt="Italian Trulli" />;
+}
 
+function reports() {
+  return <h2>About</h2>;
+}
+function products() {
+  return <h2>Users</h2>;
+}
 export default App;
