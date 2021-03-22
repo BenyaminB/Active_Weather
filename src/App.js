@@ -29,7 +29,10 @@ function App() {
   const [query, setQuery] = useState('');
   const [weather, setWeather] = useState({});
   const [isOpen, setIsOpen] = useState(false);
-  // const [hourly, setHourly] = useState({});
+  const [hourly, setHourly] = useState({});
+
+
+
 
   const search = evt => {
     if (evt.key === "Enter") {
@@ -38,21 +41,25 @@ function App() {
         .then(result => {
           setWeather(result);
           setQuery('');
-          console.log(result);
+          if (typeof result.main != "undefined") {
+            getHourly(result.coord.lat, result.coord.lon)
+          }
+          // console.log(result);
+
         });
-      //   if (typeof weather.main != "undefined") {
-      //     var lat = weather.coord.lat
-      //     var lon = weather.coord.lon
-      //     fetch(`${api.base}onecall?lat=${lat}&lon=${lon}&exclude=minutlely,alerts&units=metric&APPID=${api.key}`)
-      //       .then(res => res.json())
-      //       .then(hourlyResult => {
-      //         setHourly(hourlyResult);
-      //         setQuery('');
-      //         console.log(hourlyResult);
-      //       });
-      //   }
     }
 
+  }
+  function getHourly(lat, lon) {
+    if (typeof weather.main != "undefined") {
+      fetch(`${api.base}onecall?lat=${lat}&lon=${lon}&exclude=minutlely,alerts&units=metric&APPID=${api.key}`)
+        .then(res => res.json())
+        .then(hourlyResult => {
+          setHourly(hourlyResult);
+          setQuery('');
+          console.log(hourlyResult);
+        });
+    }
   }
 
 
@@ -82,6 +89,7 @@ function App() {
             onChange={e => setQuery(e.target.value)}
             value={query}
             onKeyPress={search}
+
           />
         </div>
 
@@ -142,14 +150,14 @@ function App() {
               </div>
 
               {/* ------------------------------------------- HOURLY TEMP  ------------------------------------------------ */}
-              <div className="hourlyWeather">Hourly weather</div>
+              <div className="hourlyWeather">{hourly.lat}</div>
 
               {/* ------------------------------------  TODAYS TOP SPORT -------------------------------------------------- */}
               <div className="topSportContainer">
                 <p className="topSportHeading">Top Suggested Sport</p>
                 {/* top sport displayed based on todays weather  */}
                 <div className="topIconContainer">
-                  {(weather.weather[0].main.includes('Clouds') || weather.weather[0].main.includes('Haze')) ? (
+                  {(weather.weather[0].main.includes('Clouds') || weather.weather[0].main.includes('Haze') || weather.weather[0].main.includes('Smoke')) ? (
                     <div className="sportList">
                       <img className="topSportIcon"
                         src={football}
@@ -196,7 +204,7 @@ function App() {
 
                 {/* number 2 */}
                 {isOpen && <div>
-                  {(weather.weather[0].main.includes('Clouds') || weather.weather[0].main.includes('Haze')) ? (
+                  {(weather.weather[0].main.includes('Clouds') || weather.weather[0].main.includes('Haze') || weather.weather[0].main.includes('Smoke')) ? (
                     <div className="sportList">
                       <p className="sportName"><img className="sportIcon"
                         src={basket}
@@ -228,7 +236,7 @@ function App() {
                 </div>}
                 {/* Number 3 */}
                 {isOpen && <div>
-                  {(weather.weather[0].main.includes('Clouds') || weather.weather[0].main.includes('Haze')) ? (
+                  {(weather.weather[0].main.includes('Clouds') || weather.weather[0].main.includes('Haze') || weather.weather[0].main.includes('Smoke')) ? (
                     <div className="sportList">
                       <p className="sportName"><img className="sportIcon"
                         src={tennis}
@@ -260,7 +268,7 @@ function App() {
                 </div>}
                 {/* Number 4 */}
                 {isOpen && <div>
-                  {(weather.weather[0].main.includes('Clouds') || weather.weather[0].main.includes('Haze')) ? (
+                  {(weather.weather[0].main.includes('Clouds') || weather.weather[0].main.includes('Haze') || weather.weather[0].main.includes('Smoke')) ? (
                     <div className="sportList">
                       <p className="sportName"><img className="sportIcon"
                         src={run}
