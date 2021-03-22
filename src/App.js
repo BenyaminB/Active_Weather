@@ -4,9 +4,15 @@ const api = {
   base: "https://api.openweathermap.org/data/2.5/"
 }
 
+const locationApi = {
+  key:"e18cd550-7ab3-11eb-b603-3d466becf114",
+  base:"https://geolocation-db.com/json/"
+}
+
 function App() {
   const [query, setQuery] = useState('');
   const [weather, setWeather] = useState({});
+  const [location, setLocation] = useState(null);
 
   const search = evt => {
     if (evt.key === "Enter") {
@@ -19,6 +25,15 @@ function App() {
         });
     }
   }
+
+  function getLocation () {
+    fetch(`${locationApi.base}${locationApi.key}`)
+    .then(response => response.json())
+    .then(data =>{
+      setLocation(data)
+      console.log(data)});
+  }
+
 
 
   const dateBuilder = (d) => {
@@ -45,6 +60,8 @@ function App() {
             value={query}
             onKeyPress={search}
           />
+          <button onClick={getLocation}>Allow Active Weather to access your Location</button>
+          {location && <h1 style={{color: "white"}}>{`${location.city}, ${location.country_name}`}</h1>}
         </div>
         {(typeof weather.main != "undefined") ? (
         <div>
