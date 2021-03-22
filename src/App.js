@@ -53,7 +53,8 @@ function App() {
   const [query, setQuery] = useState('');
   const [weather, setWeather] = useState({});
   const [isOpen, setIsOpen] = useState(false);
-  const [hourly, setHourly] = useState({});
+  const [hourly, setHourly] = useState([]);
+  const [daily, setDaily] = useState([]);
 
 
 
@@ -65,27 +66,22 @@ function App() {
         .then(result => {
           setWeather(result);
           setQuery('');
-          if (typeof result.main != "undefined") {
-            getHourly(result.coord.lat, result.coord.lon)
+          if (result.coord) {
+            getWeather(result.coord.lat, result.coord.lon);
           }
-          console.log(result);
-
-        });
-    }
-
-  }
-  function getHourly(lat, lon) {
-    if (typeof weather.main != "undefined") {
-      fetch(`${api.base}onecall?lat=${lat}&lon=${lon}&exclude=minutlely,alerts&units=metric&APPID=${api.key}`)
-        .then(res => res.json())
-        .then(hourlyResult => {
-          setHourly(hourlyResult);
-          setQuery('');
-          console.log(hourlyResult);
         });
     }
   }
 
+  function getWeather(lat, lon) {
+    fetch(`${api.base}onecall?lat=${lat}&lon=${lon}&exclude=minutlely,alerts&units=metric&APPID=${api.key}`)
+      .then(res => res.json())
+      .then(weatherResult => {
+        setHourly(weatherResult.hourly);
+        setDaily(weatherResult.daily);
+        console.log(weatherResult);
+      });
+  }
 
 
   // const dateBuilder = (d) => {
@@ -175,7 +171,15 @@ function App() {
                   </div>
 
                   {/* ------------------------------------------- HOURLY TEMP  ------------------------------------------------ */}
-                  <div className="hourlyWeather">{hourly.lat}</div>
+                  <div className="hourlyWeather">
+                    {
+                      hourly.map(item => (
+
+                        <p>{Math.round(item.temp)}°C</p>
+
+                      ))
+                    }
+                  </div>
 
                   {/* ------------------------------------  TODAYS TOP SPORT -------------------------------------------------- */}
                   <div className="topSportContainer">
@@ -219,7 +223,12 @@ function App() {
                 <div className="bottomContainer">
                   {/* daily weather displayed only when toggle is off*/}
                   {!isOpen && <div className="weekForecast">Daily Weather</div>}
-
+                  {
+                    // console.log(daily)
+                    daily.map(item => (
+                      <div className="hourlyWeather">{item.temp.day}</div>
+                    ))
+                  }
                   {/* ------------------------------------------ OTHER SPORT SUGGESTIONS ------------------------------------------------ */}
                   <div className="suggestions">
                     {!isOpen && <button className="toggleUp" onClick={() => setIsOpen(!isOpen)}><img className="arrowUp" src={arrow} alt="arrow" /></button>}
