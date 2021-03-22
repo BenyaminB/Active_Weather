@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 
 const api = {
@@ -8,8 +8,22 @@ const api = {
 
 
 function App() {
+
+  useEffect(() => {
+    fetchWeather();
+  }, []);
+
   const [query, setQuery] = useState('');
   const [weather, setWeather] = useState({});
+
+  const fetchWeather = async () => {
+    const data = await fetch(
+      `${api.base}weather?q=${'London'}&units=metric&APPID=${api.key}`
+    );
+    
+    const weather = await data.json();
+    setWeather(weather);
+  }
 
   const search = evt => {
     if (evt.key === "Enter") {
