@@ -242,14 +242,35 @@ main {
  /* -------------------------------------------- WEEKLY WEATHER FORECAST  ------------------------------------------------------ */
 
 
-.weekForecast{
+/* .weekForecast{
   margin-top:2em;
   height: 20vh;
   width: 95%;
   color: white;
-  /* margin: 5px; */
   margin-left: 10px;
   outline: 5px dotted green;
+} */
+
+
+.weekForecast{
+  outline: 5px dotted green;
+  width:100%;
+  overflow: auto;
+  padding: 2em;
+  margin-top:2em;
+  padding-left:0em;
+  padding-right:0em;
+  color: white;
+  white-space: nowrap;
+  
+}
+
+.weekForecast p{
+  display: inline;
+  color: white;
+  text-align: center;
+  padding: 14px;
+  text-decoration: none;
 
 }
 

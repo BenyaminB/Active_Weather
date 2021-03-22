@@ -49,6 +49,7 @@ const BoxContainer = styled.div`
 `;
 
 
+
 function App() {
   const [query, setQuery] = useState('');
   const [weather, setWeather] = useState({});
@@ -174,8 +175,8 @@ function App() {
                   <div className="hourlyWeather">
                     {
                       hourly.map(item => (
-
-                        <p>{Math.round(item.temp)}°C</p>
+                        // timeRN = new Date(item.dt * 1000)
+                        < p > { Math.round(item.temp)}°C</p>
 
                       ))
                     }
@@ -222,13 +223,20 @@ function App() {
                 {/* ------------------------------------------- BOTTOM CONTAINER  ------------------------------------------------ */}
                 <div className="bottomContainer">
                   {/* daily weather displayed only when toggle is off*/}
-                  {!isOpen && <div className="weekForecast">Daily Weather</div>}
-                  {
-                    // console.log(daily)
-                    daily.map(item => (
-                      <div className="hourlyWeather">{item.temp.day}</div>
-                    ))
-                  }
+                  {!isOpen && <div className="weekForecast">
+
+                    {
+                      // console.log(daily)
+                      daily.map(item => (
+
+                        <p>{item.temp.day}</p>
+
+                      ))
+                    }
+
+
+                  </div>}
+
                   {/* ------------------------------------------ OTHER SPORT SUGGESTIONS ------------------------------------------------ */}
                   <div className="suggestions">
                     {!isOpen && <button className="toggleUp" onClick={() => setIsOpen(!isOpen)}><img className="arrowUp" src={arrow} alt="arrow" /></button>}
@@ -345,7 +353,7 @@ function App() {
           </main>
         </div>
       </BoxContainer>
-    </AppContainer>
+    </AppContainer >
 
   );
 }
