@@ -1,5 +1,9 @@
 import React, { useState, useEffect } from 'react';
 
+const locationApi = {
+  key:"e18cd550-7ab3-11eb-b603-3d466becf114",
+  base:"https://geolocation-db.com/json/"
+}
 
 const api = {
   key: "6c91341b4c2a841ddae2e208e7da2de4",
@@ -13,15 +17,24 @@ function App() {
     fetchWeather();
   }, []);
 
+  const [location, setLocation] = useState();
   const [query, setQuery] = useState('');
   const [weather, setWeather] = useState({});
 
   const fetchWeather = async () => {
-    const data = await fetch(
-      `${api.base}weather?q=${'London'}&units=metric&APPID=${api.key}`
+
+    const LocationData = await fetch(
+      `${locationApi.base}${locationApi.key}`
+    );
+
+    const location = await LocationData.json();
+    setLocation(location);
+
+    const WeatherData = await fetch(
+      `${api.base}weather?q=${location.city}&units=metric&APPID=${api.key}`
     );
     
-    const weather = await data.json();
+    const weather = await WeatherData.json();
     setWeather(weather);
   }
 
