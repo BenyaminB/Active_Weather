@@ -69,15 +69,15 @@ function App() {
 
   return (
     <div className={(typeof weather.main != "undefined") ? ((weather.main.temp > 16) ? 'app warm' : 'app') : 'app'}>
+      <Router>
+        <Navbar />
+        <Switch>
+          <Route path='/home' exact components={Home} />
+          <Route path='/reports' components={Reports} />
+          <Route path='/products' components={Products} />
+        </Switch>
+      </Router>
       <main>
-        <Router>
-          <Navbar />
-          <Switch>
-            <Route path='/home' exact components={Home} />
-            <Route path='/reports' components={Reports} />
-            <Route path='/products' components={Products} />
-          </Switch>
-        </Router>
         <div className="search-box">
           <input 
             type="text"
