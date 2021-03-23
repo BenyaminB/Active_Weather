@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import Navbar from './components/Navbar';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import Home from './pages/Home';
+import Reports from './pages/Reports';
+import Products from './pages/Products';
 
 const locationApi = {
   key:"e18cd550-7ab3-11eb-b603-3d466becf114",
@@ -66,13 +69,15 @@ function App() {
 
   return (
     <div className={(typeof weather.main != "undefined") ? ((weather.main.temp > 16) ? 'app warm' : 'app') : 'app'}>
-      <Navbar />
-      <Switch>
-        <Route path='/home' exact components={Home} />
-        <Route path='/reports' components={Reports} />
-        <Route path='/products' components={Products} />
-      </Switch>
       <main>
+        <Router>
+          <Navbar />
+          <Switch>
+            <Route path='/home' exact components={Home} />
+            <Route path='/reports' components={Reports} />
+            <Route path='/products' components={Products} />
+          </Switch>
+        </Router>
         <div className="search-box">
           <input 
             type="text"
