@@ -185,11 +185,19 @@ main {
   display: inline;
   color: white;
   text-align: center;
-  padding: 14px;
+  padding: 15px;
   text-decoration: none;
 
 }
 
+.hourlyIcon{
+  width: 2.5em;
+  height: 2.5em;
+  margin:0em;
+  padding: 0em;
+  display:inline-block;
+
+}
 
  /* --------------------------------------------------- TOP SUGGESTED SPORT ------------------------------------------------------ */
 
@@ -265,11 +273,13 @@ main {
   
 }
 
+
 .weekForecast p{
   display: inline;
   color: white;
   text-align: center;
-  padding: 14px;
+  padding: 5px;
+  font: 10px;
   text-decoration: none;
 
 }

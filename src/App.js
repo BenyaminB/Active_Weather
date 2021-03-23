@@ -97,6 +97,15 @@ function App() {
   //   return `${day} ${date} ${month} ${year}`
   // }
 
+  // const getTime = (t) => {
+
+  //   let dateObj = new Date(t.dt * 1000);
+  //   let hour = dateObj.getUTCHours();
+
+  //   return `${hour}`
+
+  // }
+
   return (
     <AppContainer>
       <BoxContainer>
@@ -173,10 +182,18 @@ function App() {
 
                   {/* ------------------------------------------- HOURLY TEMP  ------------------------------------------------ */}
                   <div className="hourlyWeather">
+
                     {
                       hourly.map(item => (
                         // timeRN = new Date(item.dt * 1000)
+                        // let dateObj = new Date(item.dt * 1000);
+                        // let hours = dateObj.getUTCHours().toString();
+                        // return (
+                        //   <div>
+
                         < p > { Math.round(item.temp)}°C</p>
+                        // </div>
+
 
                       ))
                     }
@@ -352,7 +369,7 @@ function App() {
             ) : ('')}
           </main>
         </div>
-      </BoxContainer>
+      </BoxContainer >
     </AppContainer >
 
   );
