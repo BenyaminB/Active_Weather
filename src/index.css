@@ -29,9 +29,7 @@ body {
   background-image: url('./assets/sun.jpeg');
   background-size: cover;
   background-position: top center;
-  transition: 0.4 ease;
-  
-
+  /* transition: 0.4 ease; */
 
 }
 
@@ -46,7 +44,7 @@ body {
   background-image: url('./assets/morningtime.jpeg');
   background-size: cover;
   background-position: top center;
-  transition: 0.4 ease;
+  /* transition: 0.1 ease; */
 
 }
 
@@ -54,7 +52,7 @@ body {
   background-image: url('./assets/nightime.jpeg');
   background-size: cover;
   background-position: top center;
-  transition: 0.4 ease;
+  /* transition: 0.1 ease; */
 
 }
 
