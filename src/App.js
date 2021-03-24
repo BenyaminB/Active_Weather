@@ -3,6 +3,7 @@ import sunny from './weatherIcons/sunny.svg';
 import snow from './weatherIcons/snowflake.svg';
 import rain from './weatherIcons/rain.svg';
 import haze from './weatherIcons/haze.svg';
+import hazeNight from './weatherIcons/hazeNight.svg';
 import cloud from './weatherIcons/cloud.svg';
 import nightCloud from './weatherIcons/nightcloudy.svg';
 import arrow from './assets/arrow.png';
@@ -159,10 +160,17 @@ function App() {
                         alt='Icon'
                       />
                     ) : (weather.weather[0].id > 700 && weather.weather[0].id < 782) ? (
-                      <img className="tempIconSize"
-                        src={haze}
-                        alt='Icon'
-                      />
+                      (hour24 > 3 && hour24 < 19) ?
+                        (
+                          <img className="tempIconSize"
+                            src={haze}
+                            alt='Icon'
+                          />
+                        ) :
+                        <img className="tempIconSize"
+                          src={hazeNight}
+                          alt='Icon'
+                        />
                     ) : (weather.weather[0].id === 800) ? (
                       (hour24 > 3 && hour24 < 19) ?
                         (
@@ -230,10 +238,17 @@ function App() {
                                     alt='Icon'
                                   />
                                 ) : (item.weather[0].id > 700 && item.weather[0].id < 782) ? (
-                                  <img className="hourlyIcon"
-                                    src={haze}
-                                    alt='Icon'
-                                  />
+                                  (hour24 > 3 && hour24 < 19) ?
+                                    (
+                                      <img className="hourlyIcon"
+                                        src={haze}
+                                        alt='Icon'
+                                      />
+                                    ) :
+                                    <img className="hourlyIcon"
+                                      src={hazeNight}
+                                      alt='Icon'
+                                    />
                                 ) : (item.weather[0].id === 800) ? (
                                   (eachHour24 > 3 && eachHour24 < 19) ?
                                     (
