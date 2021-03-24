@@ -198,7 +198,7 @@ function App() {
                   <div className="hourlyWeather">
 
                     {
-                      hourly.map(item => {
+                      hourly.slice(0, 24).map(item => {
 
                         let hour = new Date(item.dt * 1000).toLocaleTimeString("en-us", { hour: "numeric", hour12: true, timeZone: timezone });
                         let eachHour24 = new Date(item.dt * 1000).toLocaleTimeString("en-us", { hour: "numeric", hour12: false, timeZone: timezone });
