@@ -352,7 +352,7 @@ main {
   outline: none;
   border: none;
   bottom:0;
-  padding-bottom: 1.8em;
+  padding-bottom: 2.25em;
   position:absolute;
   width: 100%;
 }
@@ -385,23 +385,30 @@ main {
 .toggleHeadingBottom{
   position:absolute;
   bottom: 0;
-  padding-left: 5.8em;
+  padding-left: 4.75em;
   text-align: left;
   color:white;
   width: 100%;
-  padding-bottom: 0.5em;
+  padding-bottom: 0.75em;
   font-style: italic;
-  text-decoration: underline
+  font-size: 110%;
+  /* text-decoration: underline */
 }
 .toggleHeadingTop{
-  padding-top: 3.1em;
-  padding-left: 5.8em;
+  padding-top: 3em;
+  padding-left: 5em;
   color:white;
   width: 100%;
   font-style: italic;
-  text-decoration: underline;
+  font-size: 110%;
+
+  /* text-decoration: underline; */
 }
 
+
+.HRLineTop{
+  width:60%;
+}
  /* ---------------------------------------------- SUGGESTED SPORTS LIST ------------------------------------------------------ */
 
 .sportName{

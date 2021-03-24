@@ -366,9 +366,12 @@ function App() {
                   {/* ------------------------------------------ OTHER SPORT SUGGESTIONS ------------------------------------------------ */}
                   <div className="suggestions">
                     {!isOpen && <button className="toggleUp" onClick={() => setIsOpen(!isOpen)}><img className="arrowUp" src={arrow} alt="arrow" /></button>}
-                    {!isOpen && <div className="toggleHeadingBottom">Other suggested Sports</div>}
+
+                    {!isOpen && <div className="toggleHeadingBottom">Other Suggested Sports</div>}
+
                     {isOpen && <button className="toggleDown" onClick={() => setIsOpen(!isOpen)}><img className="arrowDown" src={arrow} alt="arrow" /></button>}
-                    {isOpen && <div className="toggleHeadingTop">Other suggested Sports</div>}
+                    {isOpen && <div className="toggleHeadingTop">Other Suggested Sports</div>}
+                    {isOpen && <hr className="HRLineTop" />}
 
                     {/* number 2 */}
                     {isOpen && <div>
