@@ -26,7 +26,7 @@ body {
   
 }
 .app {
-  background-image: url('./assets/rainbackground.jpg');
+  background-image: url('./assets/sun.jpeg');
   background-size: cover;
   background-position: top center;
   transition: 0.4 ease;
@@ -42,12 +42,22 @@ body {
   
 
 }
-.app.warm {
-  background-image: url('./assets/rainbackground.jpg');
+.app.morning {
+  background-image: url('./assets/morningtime.jpeg');
+  background-size: cover;
+  background-position: top center;
+  transition: 0.4 ease;
 
-
- 
 }
+
+.app.night {
+  background-image: url('./assets/nightime.jpeg');
+  background-size: cover;
+  background-position: top center;
+  transition: 0.4 ease;
+
+}
+
 
 main {
   min-height: 100vh;
@@ -261,7 +271,7 @@ main {
   bottom: 0;
   margin-left:-7%;
   clip-path: url(#wave);
-  z-index: 1;
+  z-index: 0.5;
  
 }
 

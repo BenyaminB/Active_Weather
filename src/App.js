@@ -104,12 +104,17 @@ function App() {
   //   return `${day} ${date} ${month} ${year}`
   // }
 
+  const getCurrentTime = (t) => {
+    let hourTime = new Date(weather.dt * 1000).toLocaleTimeString("en-us", { hour: "numeric", hour12: false, timeZone: timezone });
+    return `${hourTime}`
+  }
 
 
   return (
     <AppContainer>
       <BoxContainer>
-        <div className={(typeof weather.main != "undefined") ? ((weather.main.temp > 16) ? 'app warm' : 'app') : 'app'}>
+        <div className={(typeof weather.main != "undefined") ? ((getCurrentTime(hourly) > 18) ? 'app night' : 'app morning') : 'app morning'}>
+
           <main>
             {/* -------------------------------------------- SEARCH BOX ------------------------------------------------------ */}
             <div className="search-box">
