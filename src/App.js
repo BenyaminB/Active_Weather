@@ -113,7 +113,7 @@ function App() {
   return (
     <AppContainer>
       <BoxContainer>
-        <div className={(typeof weather.main != "undefined") ? ((getCurrentTime(hourly) > 18) ? 'app night' : 'app morning') : 'app morning'}>
+        <div className={(typeof weather.main != "undefined") ? ((getCurrentTime(hourly) > 18 || getCurrentTime(hourly) < 4) ? 'app night' : 'app morning') : 'app morning'}>
 
           <main>
             {/* -------------------------------------------- SEARCH BOX ------------------------------------------------------ */}
