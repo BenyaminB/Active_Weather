@@ -139,19 +139,41 @@ function App() {
 
   const [user, setUser] = useState({name:"", email:""});
   const [error, setError] = useState("");
+  const [userActivities, setUserActivities] = useState({option1:"", option2:"", option3:"", option4:"", option5:""});
+  // useEffect(() => {
+  //    setTimeout(() => setUserActivities({option1:"", option2:"", option3:"", option4:"", option5:""}), 100);
+  //  }, [userActivities]);
 
   const Login = details => {
-
-    if (details.email == adminUser.email && details.password == adminUser.password) {
-      console.log("Logged In");
-      setUser({
-        name: details.name,
-        email: details.email
+    console.log(details);
+    // if (details.email == adminUser.email && details.password == adminUser.password) {
+    //   console.log("Logged In");
+    //   setUser({
+    //     name: details.name,
+    //     email: details.email
+    //   });
+    // } else {
+    //   console.log("Details do not match");
+    //   setError("Details do not match");
+    // }
+    setUserActivities({
+        option1: details.option1,
+        option2: details.option2,
+        option3: details.option3,
+        option4: details.option4,
+        option5: details.option5
       });
-    } else {
-      console.log("Details do not match");
-      setError("Details do not match");
-    }
+    // setUserActivities(userActivities => ([...userActivities, ...details]));
+
+    // useEffect(() => { setUserActivities(details) }, []); //HOOKS cant be used outside a function or component!!!
+    //   console.log(userActivities);
+
+    // setUserActivities(details, () => {
+    //   console.log("Activities recorded");
+    //   console.log(userActivities);
+    // });
+    console.log("Activities recorded");
+    console.log(userActivities);
 
   }
 
