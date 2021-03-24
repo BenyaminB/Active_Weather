@@ -1,9 +1,10 @@
-import thunderstorm from './weatherIcons/thunderstorm.svg'
-import sunny from './weatherIcons/sunny.svg'
-import snow from './weatherIcons/snowflake.svg'
-import rain from './weatherIcons/rain.svg'
-import haze from './weatherIcons/haze.svg'
-import cloud from './weatherIcons/cloud.svg'
+import thunderstorm from './weatherIcons/thunderstorm.svg';
+import sunny from './weatherIcons/sunny.svg';
+import snow from './weatherIcons/snowflake.svg';
+import rain from './weatherIcons/rain.svg';
+import haze from './weatherIcons/haze.svg';
+import cloud from './weatherIcons/cloud.svg';
+import nightCloud from './weatherIcons/nightcloudy.svg';
 import arrow from './assets/arrow.png';
 import football from './sportIcons/football.png';
 import swim from './sportIcons/swim.png';
@@ -73,6 +74,7 @@ function App() {
           if (result.coord) {
             getWeather(result.coord.lat, result.coord.lon);
           }
+          console.log(result);
         });
     }
   }
@@ -88,6 +90,7 @@ function App() {
       });
   }
 
+  let hour24 = new Date(hourly.dt * 1000).toLocaleTimeString("en-us", { hour: "numeric", hour12: false, timeZone: timezone });
 
   const getTodaysDay = (d) => {
     let days = ["Sun", "Mon", "Tues", "Wed", "Thur", "Fri", "Sat"];
@@ -140,6 +143,8 @@ function App() {
                 <div className="weather-box">
 
                   <div className="tempIcon" >
+
+
                     {(weather.weather[0].id > 199 && weather.weather[0].id < 232) ? (
                       <img className="tempIconSize"
                         src={thunderstorm}
@@ -161,10 +166,17 @@ function App() {
                         alt='Icon'
                       />
                     ) : (weather.weather[0].id === 800) ? (
-                      <img className="tempIconSize"
-                        src={sunny}
-                        alt='Icon'
-                      />
+                      (hour24 > 3 && hour24 < 19) ?
+                        (
+                          <img className="tempIconSize"
+                            src={sunny}
+                            alt='Icon'
+                          />
+                        ) :
+                        <img className="tempIconSize"
+                          src={nightCloud}
+                          alt='Icon'
+                        />
 
                     ) : (weather.weather[0].id > 800 && weather.weather[0].id < 805) ? (
                       <img className="tempIconSize"
@@ -191,7 +203,6 @@ function App() {
                       hourly.map(item => {
 
                         let hour = new Date(item.dt * 1000).toLocaleTimeString("en-us", { hour: "numeric", hour12: true, timeZone: timezone });
-
                         return (
                           // div for hourly weather
                           <div className="eachHour">
@@ -203,6 +214,7 @@ function App() {
                             <p>
                               {
                                 (item.weather[0].id > 199 && item.weather[0].id < 232) ? (
+
                                   <img className="hourlyIcon"
                                     src={thunderstorm}
                                     alt='Icon'
@@ -223,10 +235,17 @@ function App() {
                                     alt='Icon'
                                   />
                                 ) : (item.weather[0].id === 800) ? (
-                                  <img className="hourlyIcon"
-                                    src={sunny}
-                                    alt='Icon'
-                                  />
+                                  (hour24 > 3 && hour24 < 19) ?
+                                    (
+                                      <img className="hourlyIcon"
+                                        src={sunny}
+                                        alt='Icon'
+                                      />
+                                    ) :
+                                    <img className="hourlyIcon"
+                                      src={nightCloud}
+                                      alt='Icon'
+                                    />
 
                                 ) : (item.weather[0].id > 800 && item.weather[0].id < 805) ? (
                                   <img className="hourlyIcon"
@@ -238,7 +257,7 @@ function App() {
                             </p>
 
                             {/* temp for each hour  */}
-                            <p className="time">  {Math.round(item.temp)}°C</p>
+                            <p className="tempHour">  {Math.round(item.temp)}°C</p>
                           </div>
                         )
 
@@ -295,10 +314,8 @@ function App() {
 
                     {
 
-                      // console.log(daily)
                       daily.map(item => {
                         let n = new Date(item.dt * 1000).getUTCDay();
-                        console.log(n)
                         return (
                           <div className="eachDay">
                             <p className="day">{getTodaysDay(n)}</p>

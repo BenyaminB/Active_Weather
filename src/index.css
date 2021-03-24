@@ -7,6 +7,10 @@ body {
   overflow-x: hidden;
   
 }
+::-webkit-scrollbar {
+  width: 0;  /* Remove scrollbar space */
+  background: transparent;  /* Optional: just make scrollbar invisible */
+}
 
 * {
   box-sizing: border-box;
@@ -108,7 +112,7 @@ main {
   text-shadow: 2px 2px rgba(50, 50, 70, 0.5);
 }
 
- /* -------------------------------------------- WEATHER CONTAINER CSS  ------------------------------------------------------ */
+ /* -------------------------------------------- TOP WEATHER CONTAINER CSS  ------------------------------------------------------ */
 .weather-box {
   text-align: center;
   background-color: rgba(255, 255, 255, 0.2);
@@ -121,8 +125,9 @@ main {
   float:right;
   margin:5px 25px;
   color: #FFF;
-  font-size: 55px;
-  font-weight:400;
+  font-size: 3.5em;
+  padding-top: 0.05em;
+  font-weight:600;
   text-align: center;
   /* text-shadow: 3px 3px rgba(50, 50, 70, 0.5); */
 }
@@ -133,8 +138,9 @@ main {
   /* display: block; */
   text-align: center;
   font-style: italic;
+  margin-top:-0.25em;
   font-size: 20px;
-  font-weight: 100;
+  font-weight: 50;
 }
 
  /* ------------------------------------------- WEATHER ICON FOR CURRENT FORECAST  --------------------------------------------------- */
@@ -173,7 +179,7 @@ main {
   /* outline: 5px dotted green; */
   width:100%;
   overflow: auto;
-  padding: 2em;
+  padding: 2.5em;
   padding-left:0em;
   padding-right:0em;
   color: white;
@@ -190,19 +196,23 @@ main {
   padding: 10px;
   text-decoration: none;
   margin-top:-3.5em;
+  font-style: italic;
+  
 
 }
 
-.time{
+.tempHour{
   margin:0;
-  margin-top:-1em;
+  margin-top:-1.5em;
+  font-size: 90%;
+  
 }
 
 .hourlyIcon{
   width: 3em;
   /* outline: 5px dotted green; */
   height: 3em;
-  margin-top:-0.5em;
+  margin-top:-1.25em;
   padding: 0em;
   display:inline;
 }
