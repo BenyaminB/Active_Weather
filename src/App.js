@@ -21,8 +21,6 @@ import React, { useState } from 'react';
 import styled from "styled-components";
 
 
-
-
 const api = {
   key: "0e1ac23df8500a3594ba67687508735d",
   base: "https://api.openweathermap.org/data/2.5/"
@@ -61,9 +59,6 @@ function App() {
   const [timezone, setTimezone] = useState("Europe/London");
 
 
-
-
-
   const search = evt => {
     if (evt.key === "Enter") {
       fetch(`${api.base}weather?q=${query}&units=metric&APPID=${api.key}`)
@@ -74,7 +69,6 @@ function App() {
           if (result.coord) {
             getWeather(result.coord.lat, result.coord.lon);
           }
-          console.log(result);
         });
     }
   }
@@ -86,11 +80,9 @@ function App() {
         setHourly(weatherResult.hourly);
         setDaily(weatherResult.daily);
         setTimezone(weatherResult.timezone);
-        console.log(weatherResult);
       });
   }
 
-  let hour24 = new Date(hourly.dt * 1000).toLocaleTimeString("en-us", { hour: "numeric", hour12: false, timeZone: timezone });
 
   const getTodaysDay = (d) => {
     let days = ["Sun", "Mon", "Tues", "Wed", "Thur", "Fri", "Sat"];
@@ -98,6 +90,7 @@ function App() {
     return `${day}`
   }
 
+  let hour24 = new Date(hourly.dt * 1000).toLocaleTimeString("en-us", { hour: "numeric", hour12: false, timeZone: timezone });
 
   // const dateBuilder = (d) => {
   //   let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
@@ -203,6 +196,8 @@ function App() {
                       hourly.map(item => {
 
                         let hour = new Date(item.dt * 1000).toLocaleTimeString("en-us", { hour: "numeric", hour12: true, timeZone: timezone });
+                        let eachHour24 = new Date(item.dt * 1000).toLocaleTimeString("en-us", { hour: "numeric", hour12: false, timeZone: timezone });
+
                         return (
                           // div for hourly weather
                           <div className="eachHour">
@@ -235,7 +230,7 @@ function App() {
                                     alt='Icon'
                                   />
                                 ) : (item.weather[0].id === 800) ? (
-                                  (hour24 > 3 && hour24 < 19) ?
+                                  (eachHour24 > 3 && eachHour24 < 19) ?
                                     (
                                       <img className="hourlyIcon"
                                         src={sunny}
