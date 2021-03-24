@@ -21,6 +21,7 @@ import styled from "styled-components";
 
 
 
+
 const api = {
   key: "0e1ac23df8500a3594ba67687508735d",
   base: "https://api.openweathermap.org/data/2.5/"
@@ -56,6 +57,8 @@ function App() {
   const [isOpen, setIsOpen] = useState(false);
   const [hourly, setHourly] = useState([]);
   const [daily, setDaily] = useState([]);
+  const [timezone, setTimezone] = useState("Europe/London");
+
 
 
 
@@ -80,8 +83,16 @@ function App() {
       .then(weatherResult => {
         setHourly(weatherResult.hourly);
         setDaily(weatherResult.daily);
+        setTimezone(weatherResult.timezone);
         console.log(weatherResult);
       });
+  }
+
+
+  const getTodaysDay = (d) => {
+    let days = ["Sun", "Mon", "Tues", "Wed", "Thur", "Fri", "Sat"];
+    let day = days[d];
+    return `${day}`
   }
 
 
@@ -97,14 +108,7 @@ function App() {
   //   return `${day} ${date} ${month} ${year}`
   // }
 
-  // const getTime = (t) => {
 
-  //   let dateObj = new Date(t.dt * 1000);
-  //   let hour = dateObj.getUTCHours();
-
-  //   return `${hour}`
-
-  // }
 
   return (
     <AppContainer>
@@ -184,19 +188,65 @@ function App() {
                   <div className="hourlyWeather">
 
                     {
-                      hourly.map(item => (
-                        // timeRN = new Date(item.dt * 1000)
-                        // let dateObj = new Date(item.dt * 1000);
-                        // let hours = dateObj.getUTCHours().toString();
-                        // return (
-                        //   <div>
+                      hourly.map(item => {
 
-                        < p > { Math.round(item.temp)}°C</p>
-                        // </div>
+                        let hour = new Date(item.dt * 1000).toLocaleTimeString("en-us", { hour: "numeric", hour12: true, timeZone: timezone });
 
+                        return (
+                          // div for hourly weather
+                          <div className="eachHour">
 
-                      ))
+                            {/* displaying the hour  */}
+                            <p clasName="time">{hour}</p>
+
+                            {/* displaying the icon according to the weather id */}
+                            <p>
+                              {
+                                (item.weather[0].id > 199 && item.weather[0].id < 232) ? (
+                                  <img className="hourlyIcon"
+                                    src={thunderstorm}
+                                    alt='Icon'
+                                  />
+                                ) : (item.weather[0].id > 299 && item.weather[0].id < 532) ? (
+                                  <img className="hourlyIcon"
+                                    src={rain}
+                                    alt='Icon'
+                                  />
+                                ) : (item.weather[0].id > 599 && item.weather[0].id < 632) ? (
+                                  <img className="hourlyIcon"
+                                    src={snow}
+                                    alt='Icon'
+                                  />
+                                ) : (item.weather[0].id > 700 && item.weather[0].id < 782) ? (
+                                  <img className="hourlyIcon"
+                                    src={haze}
+                                    alt='Icon'
+                                  />
+                                ) : (item.weather[0].id === 800) ? (
+                                  <img className="hourlyIcon"
+                                    src={sunny}
+                                    alt='Icon'
+                                  />
+
+                                ) : (item.weather[0].id > 800 && item.weather[0].id < 805) ? (
+                                  <img className="hourlyIcon"
+                                    src={cloud}
+                                    alt='Icon'
+                                  />
+                                ) : ('')
+                              }
+                            </p>
+
+                            {/* temp for each hour  */}
+                            <p className="time">  {Math.round(item.temp)}°C</p>
+                          </div>
+                        )
+
+                      })
+
                     }
+
+
                   </div>
 
                   {/* ------------------------------------  TODAYS TOP SPORT -------------------------------------------------- */}
@@ -239,18 +289,65 @@ function App() {
 
                 {/* ------------------------------------------- BOTTOM CONTAINER  ------------------------------------------------ */}
                 <div className="bottomContainer">
+
                   {/* daily weather displayed only when toggle is off*/}
                   {!isOpen && <div className="weekForecast">
 
                     {
+
                       // console.log(daily)
-                      daily.map(item => (
+                      daily.map(item => {
+                        let n = new Date(item.dt * 1000).getUTCDay();
+                        console.log(n)
+                        return (
+                          <div className="eachDay">
+                            <p className="day">{getTodaysDay(n)}</p>
 
-                        <p>{item.temp.day}</p>
+                            <p>
+                              {
+                                (item.weather[0].id > 199 && item.weather[0].id < 232) ? (
+                                  <img className="dailyIcon"
+                                    src={thunderstorm}
+                                    alt='Icon'
+                                  />
+                                ) : (item.weather[0].id > 299 && item.weather[0].id < 532) ? (
+                                  <img className="dailyIcon"
+                                    src={rain}
+                                    alt='Icon'
+                                  />
+                                ) : (item.weather[0].id > 599 && item.weather[0].id < 632) ? (
+                                  <img className="dailyIcon"
+                                    src={snow}
+                                    alt='Icon'
+                                  />
+                                ) : (item.weather[0].id > 700 && item.weather[0].id < 782) ? (
+                                  <img className="dailyIcon"
+                                    src={haze}
+                                    alt='Icon'
+                                  />
+                                ) : (item.weather[0].id === 800) ? (
+                                  <img className="dailyIcon"
+                                    src={sunny}
+                                    alt='Icon'
+                                  />
 
-                      ))
+                                ) : (item.weather[0].id > 800 && item.weather[0].id < 805) ? (
+                                  <img className="dailyIcon"
+                                    src={cloud}
+                                    alt='Icon'
+                                  />
+                                ) : ('')
+                              }
+                            </p>
+
+
+                            <p className="todaysH">H:{Math.round(item.temp.max)}</p>
+                            <p className="todaysL">L:{Math.round(item.temp.min)}</p>
+                          </div>
+
+                        )
+                      })
                     }
-
 
                   </div>}
 

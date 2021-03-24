@@ -170,7 +170,7 @@ main {
  /* --------------------------------------------------- HOURLY WEATHER ------------------------------------------------------ */
 
  .hourlyWeather{
-  outline: 5px dotted green;
+  /* outline: 5px dotted green; */
   width:100%;
   overflow: auto;
   padding: 2em;
@@ -178,49 +178,60 @@ main {
   padding-right:0em;
   color: white;
   white-space: nowrap;
+
   
 }
 
-.hourlyWeather p{
-  display: inline;
+.eachHour{
+  display: inline-block;
+  /* outline: 5px dotted green; */
   color: white;
   text-align: center;
-  padding: 15px;
+  padding: 10px;
   text-decoration: none;
+  margin-top:-3.5em;
 
 }
 
-.hourlyIcon{
-  width: 2.5em;
-  height: 2.5em;
-  margin:0em;
-  padding: 0em;
-  display:inline-block;
+.time{
+  margin:0;
+  margin-top:-1em;
+}
 
+.hourlyIcon{
+  width: 3em;
+  /* outline: 5px dotted green; */
+  height: 3em;
+  margin-top:-0.5em;
+  padding: 0em;
+  display:inline;
 }
 
  /* --------------------------------------------------- TOP SUGGESTED SPORT ------------------------------------------------------ */
 
 
 .topSportContainer{
-  /* outline: 5px dotted green; */
+
   color: white;
   font-style: italic;
   font-weight: 400;
   font-size: 20px;
-  margin-top:-1em;
+  margin-top:-3em;
+
 
 }
 
 .topSportIcon{
   width:20%;
   vertical-align:middle;
+  margin-top:-0.25em;
   
 }
 
 .topSportName{
   margin-top:-0.3em;
   font-size: 90%;
+  padding-bottom:0.5em;
 }
 
 .topSportHeading{
@@ -237,7 +248,7 @@ main {
 
 .bottomContainer{
   width:100%;
-  height: 250px;
+  height: 230px;
   background-color: rgba(0, 0, 0, 0.3);
   position:absolute; 
   bottom: 0;
@@ -261,20 +272,60 @@ main {
 
 
 .weekForecast{
-  outline: 5px dotted green;
-  width:100%;
-  overflow: auto;
+  /* outline: 5px dotted green; */
+  font-size:80%;
+  width:90%;
+  overflow: hidden;
   padding: 2em;
-  margin-top:2em;
-  padding-left:0em;
+  margin-top:4em;
+  padding-left:2.25em;
   padding-right:0em;
   color: white;
   white-space: nowrap;
+  font-style: italic;
   
 }
 
+.eachDay{
+  display: inline-block;
+  /* outline: 5px dotted green; */
+  color: white;
+  text-align: center;
+  padding: 8px;
+  text-decoration: none;
+  margin-top:-3.5em;
 
-.weekForecast p{
+}
+
+
+.todaysH{
+  /* outline: 5px dotted green; */
+  margin-top: -1em;
+  font-size:85%;
+  color: white;
+  padding: 0;
+  font-style: italic;
+}
+
+.todaysL{
+  /* outline: 5px dotted green; */
+  margin-top: -1em;
+  font-size:85%;
+  color: white;
+  padding: 0;
+  font-style: italic;
+}
+
+.dailyIcon{
+  width: 2.25em;
+  /* outline: 5px dotted green; */
+  height: 2.25em;
+  margin-top:-0.5em;
+  padding: 0em;
+  display:inline;
+}
+
+/* .weekForecast p{
   display: inline;
   color: white;
   text-align: center;
@@ -282,7 +333,7 @@ main {
   font: 10px;
   text-decoration: none;
 
-}
+} */
 
  /* --------------------------------------------- TOGGLE (SUGGESTED SPORTS) ------------------------------------------------------ */
 
@@ -349,6 +400,8 @@ main {
 .sportName{
   color:white;
   font-size: 20px;
+  
+  
 
 }
 
@@ -357,7 +410,14 @@ main {
   padding-left: 2.5em;
   vertical-align:middle;
   
+
 }
 
-
+.sportList{
+   margin-top:-0.5em;
+}
+/* 
+.suggestions{
+  margin-top: 1em;
+} */
 
