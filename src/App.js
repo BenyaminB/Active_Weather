@@ -23,6 +23,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import Reports from './pages/Reports';
 import Products from './pages/Products';
+import SelectActivities from './SelectActivities';
 
 const locationApi = {
   key:"e18cd550-7ab3-11eb-b603-3d466becf114",
@@ -81,7 +82,7 @@ function App() {
     const WeatherData = await fetch(
       `${api.base}weather?q=${location.city}&units=metric&APPID=${api.key}`
     );
-    
+
     const weather = await WeatherData.json();
     setWeather(weather);
   }
@@ -131,6 +132,34 @@ function App() {
 
   // }
 
+  const adminUser = {
+    email: "admin@admin.com",
+    password: "admin123"
+  }
+
+  const [user, setUser] = useState({name:"", email:""});
+  const [error, setError] = useState("");
+
+  const Login = details => {
+
+    if (details.email == adminUser.email && details.password == adminUser.password) {
+      console.log("Logged In");
+      setUser({
+        name: details.name,
+        email: details.email
+      });
+    } else {
+      console.log("Details do not match");
+      setError("Details do not match");
+    }
+
+  }
+
+  const Logout = () => {
+    console.log("Logout");
+    setUser({name:"", email:""});
+  }
+
   return (
     <AppContainer>
       <BoxContainer>
@@ -156,6 +185,9 @@ function App() {
 
               />
             </div>
+
+          {/*------------------SELECT ACTIVITES-----------------------------------------------------------------*/}
+            <div className="activities"><SelectActivities  Login={Login} error={error}/> </div>
           {/* --------------------------- EVERYTHING BELOW IS DISPLAYED ONLY IF CITY IS SELECTED---------------------------------------- */}
           {(typeof weather.main != "undefined") ? (
               <div>
