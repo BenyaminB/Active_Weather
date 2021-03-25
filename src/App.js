@@ -160,7 +160,7 @@ function App() {
                         alt='Icon'
                       />
                     ) : (weather.weather[0].id > 700 && weather.weather[0].id < 782) ? (
-                      (hour24 > 3 && hour24 < 19) ?
+                      (getCurrentTime(hourly) > 3 && getCurrentTime(hourly) < 19) ?
                         (
                           <img className="tempIconSize"
                             src={haze}
@@ -172,7 +172,7 @@ function App() {
                           alt='Icon'
                         />
                     ) : (weather.weather[0].id === 800) ? (
-                      (hour24 > 3 && hour24 < 19) ?
+                      (getCurrentTime(hourly) > 3 && getCurrentTime(hourly) < 19) ?
                         (
                           <img className="tempIconSize"
                             src={sunny}
@@ -198,8 +198,9 @@ function App() {
                   {/* ------------------------------------------- TODAYS TEMP  ------------------------------------------------ */}
                   <div className="temp">
                     {Math.round(weather.main.temp)}°C
-                {/* div holding todays weather description */}
+                    {/* div holding todays weather description */}
                     <div className="description">{weather.weather[0].main}</div>
+
                   </div>
 
                   {/* ------------------------------------------- HOURLY TEMP  ------------------------------------------------ */}
@@ -288,7 +289,7 @@ function App() {
                     <p className="topSportHeading">Top Suggested Sport</p>
                     {/* top sport displayed based on todays weather  */}
                     <div className="topIconContainer">
-                      {(weather.weather[0].main.includes('Clouds') || weather.weather[0].main.includes('Haze') || weather.weather[0].main.includes('Smoke')) ? (
+                      {(weather.weather[0].main.includes('Clouds') || weather.weather[0].main.includes('Haze') || weather.weather[0].main.includes('Smoke') || weather.weather[0].main.includes('Mist')) ? (
                         <div className="sportList">
                           <img className="topSportIcon"
                             src={football}
@@ -395,7 +396,7 @@ function App() {
 
                     {/* number 2 */}
                     {isOpen && <div>
-                      {(weather.weather[0].main.includes('Clouds') || weather.weather[0].main.includes('Haze') || weather.weather[0].main.includes('Smoke')) ? (
+                      {(weather.weather[0].main.includes('Clouds') || weather.weather[0].main.includes('Haze') || weather.weather[0].main.includes('Smoke') || weather.weather[0].main.includes('Mist')) ? (
                         <div className="sportList">
                           <p className="sportName"><img className="sportIcon"
                             src={basket}
@@ -427,7 +428,7 @@ function App() {
                     </div>}
                     {/* Number 3 */}
                     {isOpen && <div>
-                      {(weather.weather[0].main.includes('Clouds') || weather.weather[0].main.includes('Haze') || weather.weather[0].main.includes('Smoke')) ? (
+                      {(weather.weather[0].main.includes('Clouds') || weather.weather[0].main.includes('Haze') || weather.weather[0].main.includes('Smoke') || weather.weather[0].main.includes('Mist')) ? (
                         <div className="sportList">
                           <p className="sportName"><img className="sportIcon"
                             src={tennis}
@@ -459,7 +460,7 @@ function App() {
                     </div>}
                     {/* Number 4 */}
                     {isOpen && <div>
-                      {(weather.weather[0].main.includes('Clouds') || weather.weather[0].main.includes('Haze') || weather.weather[0].main.includes('Smoke')) ? (
+                      {(weather.weather[0].main.includes('Clouds') || weather.weather[0].main.includes('Haze') || weather.weather[0].main.includes('Smoke') || weather.weather[0].main.includes('Mist')) ? (
                         <div className="sportList">
                           <p className="sportName"><img className="sportIcon"
                             src={run}
