@@ -33,8 +33,6 @@ const BoxContainer = styled.div`
     overflow: hidden;
 `;
 
-
-
 function App() {
   const [query, setQuery] = useState('');
   const [weather, setWeather] = useState({});
@@ -43,7 +41,7 @@ function App() {
   const [daily, setDaily] = useState([]);
   const [timezone, setTimezone] = useState("Europe/London");
 
-
+  // runs when the user presses enter and fetchs the data from the api
   const search = evt => {
     if (evt.key === "Enter") {
       fetch(`${api.base}weather?q=${query}&units=metric&APPID=${api.key}`)
@@ -58,6 +56,7 @@ function App() {
     }
   }
 
+  // function to get daily and hourly weather from "one call" api
   function getWeather(lat, lon) {
     fetch(`${api.base}onecall?lat=${lat}&lon=${lon}&exclude=minutlely,alerts&units=metric&APPID=${api.key}`)
       .then(res => res.json())
@@ -68,26 +67,14 @@ function App() {
       });
   }
 
-
+  // used to get days of the week depending on the integer returned from the api 
   const getTodaysDay = (d) => {
     let days = ["Sun", "Mon", "Tues", "Wed", "Thur", "Fri", "Sat"];
     let day = days[d];
     return `${day}`
   }
 
-
-  // const dateBuilder = (d) => {
-  //   let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-  //   let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-
-  //   let day = days[d.getDay()];
-  //   let date = d.getDate();
-  //   let month = months[d.getMonth()];
-  //   let year = d.getFullYear();
-
-  //   return `${day} ${date} ${month} ${year}`
-  // }
-
+  // used to get the current time in the city searched in a 24 hour format 
   const getCurrentTime = (t) => {
     let hourTime = new Date(weather.dt * 1000).toLocaleTimeString("en-us", { hour: "numeric", hour12: false, timeZone: timezone });
     return `${hourTime}`
@@ -98,7 +85,6 @@ function App() {
     <AppContainer>
       <BoxContainer>
         <div className={(typeof weather.main != "undefined") ? ((getCurrentTime(hourly) > 18 || getCurrentTime(hourly) < 4) ? 'app night' : 'app morning') : 'app morning'}>
-
           <main>
             {/* -------------------------------------------- SEARCH BOX ------------------------------------------------------ */}
             <div className="search-box">
@@ -157,20 +143,14 @@ function App() {
                             <p clasName="time">{hour}</p>
 
                             {/* displaying the icon according to the weather id */}
-                            <p>
-                              {currentHourlyIcon(item, eachHour24, hour)}
-                            </p>
+                            <p>{currentHourlyIcon(item, eachHour24, hour)}</p>
 
                             {/* temp for each hour  */}
                             <p className="tempHour">  {Math.round(item.temp)}°C</p>
                           </div>
                         )
-
                       })
-
                     }
-
-
                   </div>
 
                   {/* ------------------------------------  TODAYS TOP SPORT -------------------------------------------------- */}
@@ -202,19 +182,18 @@ function App() {
                             <p className="todaysH">H:{Math.round(item.temp.max)}</p>
                             <p className="todaysL">L:{Math.round(item.temp.min)}</p>
                           </div>
-
                         )
                       })
                     }
-
                   </div>}
 
                   {/* ------------------------------------------ OTHER SPORT SUGGESTIONS ------------------------------------------------ */}
                   <div className="suggestions">
+                    {/* shows the below when the button is not clicked eg in the not opened state  */}
                     {!isOpen && <button className="toggleUp" onClick={() => setIsOpen(!isOpen)}><img className="arrowUp" src={arrow} alt="arrow" /></button>}
-
                     {!isOpen && <div className="toggleHeadingBottom">Other Suggested Sports</div>}
 
+                    {/* shows the below when the button is clicked eg in the opened state  */}
                     {isOpen && <button className="toggleDown" onClick={() => setIsOpen(!isOpen)}><img className="arrowDown" src={arrow} alt="arrow" /></button>}
                     {isOpen && <div className="toggleHeadingTop">Other Suggested Sports</div>}
                     {isOpen && <hr className="HRLineTop" />}
@@ -233,12 +212,13 @@ function App() {
                     </div>}
                   </div>
                 </div>
+
+                {/* used to create the wavy div which hold the bottom container */}
                 <svg>
                   <clipPath id="wave" clipPathUnits="objectBoundingBox">
                     <path className="st0" d="M1,0c0,0-0.3,0.1-0.5,0.1S0.3,0,0,0.1V1h1L1,0z" />
                   </clipPath>
                 </svg>
-
               </div>
             ) : ('')}
           </main>
