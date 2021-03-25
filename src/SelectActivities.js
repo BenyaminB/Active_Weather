@@ -12,8 +12,9 @@ function SelectActivities({ Login, error }) {
   return (
     <form onSubmit={submitHandler}>
               <div className="form-inner">
-              <h2>Select up to 5 favourite sports</h2>
+              <h3>Select up to 5 favourite sports</h3>
               {/*ERROR*/ (error != "") ? (<div className="error">{error}</div>) : ""}
+              <div class="select-options">
                 <ol>
                   <li><select name="1" id="1" onChange={e => setDetails({...details, option1: e.target.value})} value={details.option1} >
                   <option value=""></option>
@@ -56,37 +57,13 @@ function SelectActivities({ Login, error }) {
                   <option value="Cycling">Cycling</option>
                   </select></li>
                 </ol>
-              </div>
+               </div>
               <div style={{textAlign: "center"}}>
                 <input type="submit" value="LOGIN" />
               </div>
+            </div>
             </form>
-    // <form onSubmit={submitHandler}>
-    //   <div className="form-inner">
-    //     <h2> Login </h2>
-    //     {/*ERROR*/ (error != "") ? (<div className="error">{error}</div>) : ""}
-    //     <div className="form-group">
-    //       <label htmlFor="name">Name:</label>
-    //       <input type="text" name="name" id="name" onChange={e => setDetails({...details, name: e.target.value})} value={details.name} />
-    //     </div>
-    //     <div className="form-group">
-    //       <label htmlFor="email">Email:</label>
-    //       <input type="email" name="email" id="email" onChange={e => setDetails({...details, email: e.target.value})} value={details.email} />
-    //     </div>
-    //     <div className="form-group">
-    //       <label htmlFor="password">Password:</label>
-    //       <input type="password" name="password" id="password" onChange={e => setDetails({...details, password: e.target.value})} value={details.password} />
-    //     </div>
-    //     <input type="submit" value="LOGIN" />
-    //   </div>
-    // </form>
   )
 }
 
 export default SelectActivities;
-// <select name="cars" id="cars" form="carform">
-//   <option value="volvo">Volvo</option>
-//   <option value="saab">Saab</option>
-//   <option value="opel">Opel</option>
-//   <option value="audi">Audi</option>
-// </select>

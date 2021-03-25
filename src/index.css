@@ -360,3 +360,22 @@ main {
 }
 
 /*---------------SELECT Activities CSS------------------------*/
+.activities input, button{
+  appearance: none;
+  background: none;
+  border: none;
+  outline: none;
+}
+
+.select-options {
+  width:300px;
+}
+
+select {
+        width: 150px;
+        margin: 10px;
+    }
+    select:focus {
+        min-width: 150px;
+        width: auto;
+    }
