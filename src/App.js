@@ -140,12 +140,12 @@ function App() {
   const [user, setUser] = useState({name:"", email:""});
   const [error, setError] = useState("");
   const [userActivities, setUserActivities] = useState({option1:"", option2:"", option3:"", option4:"", option5:""});
+  var tempUserActivities = userActivities;
   // useEffect(() => {
   //    setTimeout(() => setUserActivities({option1:"", option2:"", option3:"", option4:"", option5:""}), 100);
   //  }, [userActivities]);
 
   const Login = details => {
-    console.log(details);
     // if (details.email == adminUser.email && details.password == adminUser.password) {
     //   console.log("Logged In");
     //   setUser({
@@ -163,6 +163,9 @@ function App() {
         option4: details.option4,
         option5: details.option5
       });
+      // Cause the useState var doesnt get sync instantly,
+      // I am using a var as a temp substitue for userActivities use state variable
+      tempUserActivities = details;
     // setUserActivities(userActivities => ([...userActivities, ...details]));
 
     // useEffect(() => { setUserActivities(details) }, []); //HOOKS cant be used outside a function or component!!!
@@ -173,7 +176,8 @@ function App() {
     //   console.log(userActivities);
     // });
     console.log("Activities recorded");
-    console.log(userActivities);
+    // console.log(userActivities);
+    // console.log(tempUserActivities);
 
   }
 
