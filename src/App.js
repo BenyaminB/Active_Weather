@@ -1,21 +1,4 @@
-import thunderstorm from './weatherIcons/thunderstorm.svg'
-import sunny from './weatherIcons/sunny.svg'
-import snow from './weatherIcons/snowflake.svg'
-import rain from './weatherIcons/rain.svg'
-import haze from './weatherIcons/haze.svg'
-import cloud from './weatherIcons/cloud.svg'
-import arrow from './assets/arrow.png';
-import football from './sportIcons/football.png';
-import swim from './sportIcons/swim.png';
-import basket from './sportIcons/basketball.png';
-import cycle from './sportIcons/cycle.png';
-import run from './sportIcons/run.png';
-import skate from './sportIcons/skate.png';
-import sledge from './sportIcons/sledge.png';
-import ski from './sportIcons/ski.png';
-import snowboard from './sportIcons/snow.png';
-import tennis from './sportIcons/tennis.png';
-import volley from './sportIcons/volley.png';
+import { currentWeatherIcon, currentHourlyIcon, TodaysTopSport, getDailyIcon, numberOneSuggested, numberTwoSuggested, numberThreeSuggested } from './common.js';
 import styled from "styled-components";
 import React, { useState, useEffect } from 'react';
 import Navbar from './components/Navbar';
