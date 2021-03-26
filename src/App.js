@@ -1,12 +1,11 @@
 import arrow from './assets/arrow.png';
 import styled from "styled-components";
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { currentWeatherIcon, currentHourlyIcon, TodaysTopSport, getDailyIcon, numberOneSuggested, numberTwoSuggested, numberThreeSuggested } from './common.js';
 
 const locationApi = {
-  key:"e18cd550-7ab3-11eb-b603-3d466becf114",
-  base:"https://geolocation-db.com/json/"
+  key: "e18cd550-7ab3-11eb-b603-3d466becf114",
+  base: "https://geolocation-db.com/json/"
 }
 
 const api = {
@@ -59,10 +58,11 @@ function App() {
     const location = await LocationData.json();
     setLocation(location);
 
+
     const WeatherData = await fetch(
       `${api.base}weather?q=${location.city}&units=metric&APPID=${api.key}`
     );
-    
+
     const weather = await WeatherData.json();
     setWeather(weather);
 
@@ -91,7 +91,7 @@ function App() {
       .then(weatherResult => {
         setHourly(weatherResult.hourly);
         setDaily(weatherResult.daily);
-        console.log(weatherResult);
+        setTimezone(weatherResult.timezone);
       });
   }
 
@@ -132,7 +132,7 @@ function App() {
   return (
     <AppContainer>
       <BoxContainer>
-        <div className={(typeof weather.main != "undefined") ? ((weather.main.temp > 16) ? 'app warm' : 'app') : 'app'}>
+        <div className={(typeof weather.main != "undefined") ? ((getCurrentTime(hourly) > 18 || getCurrentTime(hourly) < 4) ? 'app night' : 'app morning') : 'app morning'}>
           <main>
             {/* -------------------------------------------- SEARCH BOX ------------------------------------------------------ */}
             <div className="search-box">

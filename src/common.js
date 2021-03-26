@@ -98,7 +98,7 @@ export function currentWeatherIcon(weather, timeRN) {
 }
 
 
-// -------------------------------------------------- GET HOURLY WEATHER ICON ---- -------------------------------------------------
+// -------------------------------------------------- GET HOURLY WEATHER ICON ------------------------------------------------------
 export function currentHourlyIcon(item, eachHour24, hour24) {
     if (item.weather[0].id > 199 && item.weather[0].id < 232) {
         return (
