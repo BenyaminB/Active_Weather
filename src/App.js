@@ -5,13 +5,8 @@ import styled from "styled-components";
 import { currentWeatherIcon, currentHourlyIcon, TodaysTopSport, getDailyIcon, numberOneSuggested, numberTwoSuggested, numberThreeSuggested } from './common.js';
 
 const api = {
-  key: "0e1ac23df8500a3594ba67687508735d",
+  key: "c7a512eff59499517a0d64f1e9c03fca",
   base: "https://api.openweathermap.org/data/2.5/"
-}
-
-const locationApi = {
-  key: "e18cd550-7ab3-11eb-b603-3d466becf114",
-  base: "https://geolocation-db.com/json/"
 }
 
 
@@ -53,25 +48,31 @@ function App() {
   const [timezone, setTimezone] = useState("Europe/London");
 
   const fetchWeather = async () => {
+    const successCallback = async (position) => {
+      console.log(position)
+      var lat = position.coords.latitude;
+      var lon = position.coords.longitude;
 
-    const LocationData = await fetch(
-      `${locationApi.base}${locationApi.key}`
-    );
+      const WeatherData = await fetch(
+        `${api.base}weather?lat=${lat}&lon=${lon}&units=metric&appid=${api.key}`
+      );
 
-    const location = await LocationData.json();
-    setLocation(location);
+      const weather = await WeatherData.json();
+      setWeather(weather);
+      console.log(weather)
 
-
-    const WeatherData = await fetch(
-      `${api.base}weather?q=${location.city}&units=metric&APPID=${api.key}`
-    );
-
-    const weather = await WeatherData.json();
-    setWeather(weather);
-
-    if (weather.coord) {
-      getWeather(weather.coord.lat, weather.coord.lon);
+      if (weather.coord) {
+        getWeather(weather.coord.lat, weather.coord.lon);
+      }
     }
+
+
+    const errorCallback = (error) => {
+      console.error(error)
+    }
+
+    const location = navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
+    setLocation(location);
   }
 
   // runs when the user presses enter and fetchs the data from the api
