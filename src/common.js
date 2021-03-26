@@ -234,7 +234,7 @@ export function TodaysTopSport(weather) {
     if (weather.weather[0].main.includes('Clouds') || weather.weather[0].main.includes('Haze') || weather.weather[0].main.includes('Smoke') || weather.weather[0].main.includes('Mist')) {
         return (
             <div className="sportList">
-                <a href="https://www.google.com/search?q=football+required+equipment&tbm=shop" target="_blank"><img className="topSportIcon"
+                <a href="https://www.google.com/search?q=football+required+equipment&tbm=shop" target="_blank" rel="noopener noreferrer"><img className="topSportIcon"
                     src={football}
                     alt='Icon'
 
@@ -245,7 +245,7 @@ export function TodaysTopSport(weather) {
     else if (weather.weather[0].main.includes('Clear')) {
         return (
             <div className="sportList">
-                <a href="https://www.google.com/search?q=Swimming+required+equipment&tbm=shop" target="_blank"><img className="topSportIcon"
+                <a href="https://www.google.com/search?q=Swimming+required+equipment&tbm=shop" target="_blank" rel="noopener noreferrer"><img className="topSportIcon"
                     src={swim}
                     alt='Icon'
                 /> </a> <p className="topSportName">Swimming</p>
@@ -255,7 +255,7 @@ export function TodaysTopSport(weather) {
     else if (weather.weather[0].main.includes('Snow')) {
         return (
             <div className="sportList">
-                <a href="https://www.google.com/search?q=skiing+required+equipment&tbm=shop" target="_blank"><img className="topSportIcon"
+                <a href="https://www.google.com/search?q=skiing+required+equipment&tbm=shop" target="_blank" rel="noopener noreferrer" ><img className="topSportIcon"
                     src={ski}
                     alt='Icon'
                 /></a><p className="topSportName">Skiing</p>
@@ -265,7 +265,7 @@ export function TodaysTopSport(weather) {
     else if (weather.weather[0].main.includes('Rain') || weather.weather[0].main.includes('Thunderstorm') || weather.weather[0].main.includes('Drizzle')) {
         return (
             <div className="sportList">
-                <a href="https://www.google.com/search?q=Cycling+required+equipment&tbm=shop" target="_blank"><img className="topSportIcon"
+                <a href="https://www.google.com/search?q=Cycling+required+equipment&tbm=shop" target="_blank" rel="noopener noreferrer"><img className="topSportIcon"
                     src={cycle}
                     alt='Icon'
                 /> </a> <p className="topSportName">Cycle</p>
@@ -284,7 +284,7 @@ export function TodaysTopSport(weather) {
 export function numberOneSuggested(weather) {
     if (weather.weather[0].main.includes('Clouds') || weather.weather[0].main.includes('Haze') || weather.weather[0].main.includes('Smoke') || weather.weather[0].main.includes('Mist')) {
         return (<div className="sportList">
-            <p className="sportName"><a href="https://www.google.com/search?q=basketball+required+equipment&tbm=shop" target="_blank"><img className="sportIcon"
+            <p className="sportName"><a href="https://www.google.com/search?q=basketball+required+equipment&tbm=shop" target="_blank" rel="noopener noreferrer"><img className="sportIcon"
                 src={basket}
                 alt='Icon'
             /></a> Basketball</p>
@@ -293,7 +293,7 @@ export function numberOneSuggested(weather) {
     }
     else if (weather.weather[0].main.includes('Clear')) {
         return (<div className="sportList">
-            <p className="sportName"><a href="https://www.google.com/search?q=volleyball+required+equipment&tbm=shop" target="_blank"><img className="sportIcon"
+            <p className="sportName"><a href="https://www.google.com/search?q=volleyball+required+equipment&tbm=shop" target="_blank" rel="noopener noreferrer"><img className="sportIcon"
                 src={volley}
                 alt='Icon'
             /></a> Volleyball</p>
@@ -302,7 +302,7 @@ export function numberOneSuggested(weather) {
     }
     else if (weather.weather[0].main.includes('Snow')) {
         return (<div className="sportList">
-            <p className="sportName"><a href="https://www.google.com/search?q=Snowboarding+required+equipment&tbm=shop" target="_blank"><img className="sportIcon"
+            <p className="sportName"><a href="https://www.google.com/search?q=Snowboarding+required+equipment&tbm=shop" target="_blank" rel="noopener noreferrer"><img className="sportIcon"
                 src={snowboard}
                 alt='Icon'
             /></a> Snowboarding</p>
@@ -311,7 +311,7 @@ export function numberOneSuggested(weather) {
     }
     else if (weather.weather[0].main.includes('Rain') || weather.weather[0].main.includes('Thunderstorm') || weather.weather[0].main.includes('Drizzle')) {
         return (<div className="sportList">
-            <p className="sportName"><a href="https://www.google.com/search?q=indoor+football+required+equipment&tbm=shop" target="_blank"><img className="sportIcon"
+            <p className="sportName"><a href="https://www.google.com/search?q=indoor+football+required+equipment&tbm=shop" target="_blank" rel="noopener noreferrer"><img className="sportIcon"
                 src={football}
                 alt='Icon'
             /></a> Indoor Football</p>
@@ -327,7 +327,7 @@ export function numberOneSuggested(weather) {
 export function numberTwoSuggested(weather) {
     if (weather.weather[0].main.includes('Clouds') || weather.weather[0].main.includes('Haze') || weather.weather[0].main.includes('Smoke') || weather.weather[0].main.includes('Mist')) {
         return (<div className="sportList">
-            <p className="sportName"><a href="https://www.google.com/search?q=tennis+required+equipment&tbm=shop" target="_blank"><img className="sportIcon"
+            <p className="sportName"><a href="https://www.google.com/search?q=tennis+required+equipment&tbm=shop" target="_blank" rel="noopener noreferrer"><img className="sportIcon"
                 src={tennis}
                 alt='Icon'
             /></a> Tennis</p>
@@ -336,7 +336,7 @@ export function numberTwoSuggested(weather) {
     }
     else if (weather.weather[0].main.includes('Clear')) {
         return (<div className="sportList">
-            <p className="sportName"><a href="https://www.google.com/search?q=football+required+equipment&tbm=shop" target="_blank"><img className="sportIcon"
+            <p className="sportName"><a href="https://www.google.com/search?q=football+required+equipment&tbm=shop" target="_blank" rel="noopener noreferrer"><img className="sportIcon"
                 src={football}
                 alt='Icon'
             /></a> Football</p>
@@ -345,7 +345,7 @@ export function numberTwoSuggested(weather) {
     }
     else if (weather.weather[0].main.includes('Snow')) {
         return (<div className="sportList">
-            <p className="sportName"><a href="https://www.google.com/search?q=ice+Skating+required+equipment&tbm=shop" target="_blank"><img className="sportIcon"
+            <p className="sportName"><a href="https://www.google.com/search?q=ice+Skating+required+equipment&tbm=shop" target="_blank" rel="noopener noreferrer"><img className="sportIcon"
                 src={skate}
                 alt='Icon'
             /></a> Ice Skating</p>
@@ -354,7 +354,7 @@ export function numberTwoSuggested(weather) {
     }
     else if (weather.weather[0].main.includes('Rain') || weather.weather[0].main.includes('Thunderstorm') || weather.weather[0].main.includes('Drizzle')) {
         return (<div className="sportList">
-            <p className="sportName"><a href="https://www.google.com/search?q=indoor+volleyball+required+equipment&tbm=shop" target="_blank"><img className="sportIcon"
+            <p className="sportName"><a href="https://www.google.com/search?q=indoor+volleyball+required+equipment&tbm=shop" target="_blank" rel="noopener noreferrer"><img className="sportIcon"
                 src={volley}
                 alt='Icon'
             /></a> Indoor Volleyball</p>
@@ -370,7 +370,7 @@ export function numberTwoSuggested(weather) {
 export function numberThreeSuggested(weather) {
     if (weather.weather[0].main.includes('Clouds') || weather.weather[0].main.includes('Haze') || weather.weather[0].main.includes('Smoke') || weather.weather[0].main.includes('Mist')) {
         return (<div className="sportList">
-            <p className="sportName"><a href="https://www.google.com/search?q=running+required+equipment&tbm=shop" target="_blank"><img className="sportIcon"
+            <p className="sportName"><a href="https://www.google.com/search?q=running+required+equipment&tbm=shop" target="_blank" rel="noopener noreferrer"><img className="sportIcon"
                 src={run}
                 alt='Icon'
             /></a> Running</p>
@@ -379,7 +379,7 @@ export function numberThreeSuggested(weather) {
     }
     else if (weather.weather[0].main.includes('Clear')) {
         return (<div className="sportList">
-            <p className="sportName"><a href="https://www.google.com/search?q=Tennis+required+equipment&tbm=shop" target="_blank"><img className="sportIcon"
+            <p className="sportName"><a href="https://www.google.com/search?q=Tennis+required+equipment&tbm=shop" target="_blank" rel="noopener noreferrer"><img className="sportIcon"
                 src={tennis}
                 alt='Icon'
             /></a> Tennis</p>
@@ -388,7 +388,7 @@ export function numberThreeSuggested(weather) {
     }
     else if (weather.weather[0].main.includes('Snow')) {
         return (<div className="sportList">
-            <p className="sportName"><a href="https://www.google.com/search?q=Sledging+required+equipment&tbm=shop" target="_blank"><img className="sportIcon"
+            <p className="sportName"><a href="https://www.google.com/search?q=Sledging+required+equipment&tbm=shop" target="_blank" rel="noopener noreferrer"><img className="sportIcon"
                 src={sledge}
                 alt='Icon'
             /></a> Sledging</p>
@@ -397,7 +397,7 @@ export function numberThreeSuggested(weather) {
     }
     else if (weather.weather[0].main.includes('Rain') || weather.weather[0].main.includes('Thunderstorm') || weather.weather[0].main.includes('Drizzle')) {
         return (<div className="sportList">
-            <p className="sportName"><a href="https://www.google.com/search?q=running+required+equipment&tbm=shop" target="_blank"><img className="sportIcon"
+            <p className="sportName"><a href="https://www.google.com/search?q=running+required+equipment&tbm=shop" target="_blank" rel="noopener noreferrer"><img className="sportIcon"
                 src={run}
                 alt='Icon'
             /></a> Running</p>
