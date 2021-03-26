@@ -65,6 +65,10 @@ function App() {
     
     const weather = await WeatherData.json();
     setWeather(weather);
+
+    if (weather.coord) {
+      getWeather(weather.coord.lat, weather.coord.lon);
+    }
   }
 
   const search = evt => {
