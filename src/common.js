@@ -28,6 +28,7 @@ import volley from './sportIcons/volley.png';
 export function currentWeatherIcon(weather, timeRN) {
     if (weather.weather[0].id > 199 && weather.weather[0].id < 232) {
         return (<img className="tempIconSize"
+
             src={thunderstorm}
             alt='Icon'
         />
@@ -236,6 +237,7 @@ export function TodaysTopSport(weather) {
                 <img className="topSportIcon"
                     src={football}
                     alt='Icon'
+
                 /> <p className="topSportName">Football</p>
             </div>
         )
