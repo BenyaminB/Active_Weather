@@ -1,6 +1,6 @@
 
 import arrow from './assets/arrow.png';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from "styled-components";
 import { currentWeatherIcon, currentHourlyIcon, TodaysTopSport, getDailyIcon, numberOneSuggested, numberTwoSuggested, numberThreeSuggested } from './common.js';
 
@@ -8,6 +8,12 @@ const api = {
   key: "0e1ac23df8500a3594ba67687508735d",
   base: "https://api.openweathermap.org/data/2.5/"
 }
+
+const locationApi = {
+  key: "e18cd550-7ab3-11eb-b603-3d466becf114",
+  base: "https://geolocation-db.com/json/"
+}
+
 
 
 const AppContainer = styled.div`
@@ -34,12 +40,39 @@ const BoxContainer = styled.div`
 `;
 
 function App() {
+  useEffect(() => {
+    fetchWeather();
+  }, []);
+
+  const [location, setLocation] = useState();
   const [query, setQuery] = useState('');
   const [weather, setWeather] = useState({});
   const [isOpen, setIsOpen] = useState(false);
   const [hourly, setHourly] = useState([]);
   const [daily, setDaily] = useState([]);
   const [timezone, setTimezone] = useState("Europe/London");
+
+  const fetchWeather = async () => {
+
+    const LocationData = await fetch(
+      `${locationApi.base}${locationApi.key}`
+    );
+
+    const location = await LocationData.json();
+    setLocation(location);
+
+
+    const WeatherData = await fetch(
+      `${api.base}weather?q=${location.city}&units=metric&APPID=${api.key}`
+    );
+
+    const weather = await WeatherData.json();
+    setWeather(weather);
+
+    if (weather.coord) {
+      getWeather(weather.coord.lat, weather.coord.lon);
+    }
+  }
 
   // runs when the user presses enter and fetchs the data from the api
   const search = evt => {
