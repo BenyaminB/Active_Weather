@@ -207,6 +207,8 @@ function App() {
                     {/* top sport displayed based on todays weather  */}
                     <div className="topIconContainer">
                       {TodaysTopSport(weather)}
+
+
                     </div>
                   </div>
                 </div>
