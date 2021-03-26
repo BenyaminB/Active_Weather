@@ -49,7 +49,6 @@ function App() {
 
   const fetchWeather = async () => {
     const successCallback = async (position) => {
-      console.log(position)
       var lat = position.coords.latitude;
       var lon = position.coords.longitude;
 
@@ -59,7 +58,6 @@ function App() {
 
       const weather = await WeatherData.json();
       setWeather(weather);
-      console.log(weather)
 
       if (weather.coord) {
         getWeather(weather.coord.lat, weather.coord.lon);
