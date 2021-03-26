@@ -293,7 +293,7 @@ export function numberOneSuggested(weather) {
     }
     else if (weather.weather[0].main.includes('Clear')) {
         return (<div className="sportList">
-            <p className="sportName"><a href="https://www.google.com/search?q=valleyball+required+equipment&tbm=shop" target="_blank"><img className="sportIcon"
+            <p className="sportName"><a href="https://www.google.com/search?q=volleyball+required+equipment&tbm=shop" target="_blank"><img className="sportIcon"
                 src={volley}
                 alt='Icon'
             /></a> Volleyball</p>
@@ -354,7 +354,7 @@ export function numberTwoSuggested(weather) {
     }
     else if (weather.weather[0].main.includes('Rain') || weather.weather[0].main.includes('Thunderstorm') || weather.weather[0].main.includes('Drizzle')) {
         return (<div className="sportList">
-            <p className="sportName"><a href="https://www.google.com/search?q=indoor+valleyball+required+equipment&tbm=shop" target="_blank"><img className="sportIcon"
+            <p className="sportName"><a href="https://www.google.com/search?q=indoor+volleyball+required+equipment&tbm=shop" target="_blank"><img className="sportIcon"
                 src={volley}
                 alt='Icon'
             /></a> Indoor Volleyball</p>
