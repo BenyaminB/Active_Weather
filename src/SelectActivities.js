@@ -59,7 +59,7 @@ function SelectActivities({ Login, error }) {
                 </ol>
                </div>
               <div style={{textAlign: "center"}}>
-                <input type="submit" value="LOGIN" />
+                <input type="submit" value="SAVE" />
               </div>
             </div>
             </form>
