@@ -234,7 +234,7 @@ export function TodaysTopSport(weather) {
     if (weather.weather[0].main.includes('Clouds') || weather.weather[0].main.includes('Haze') || weather.weather[0].main.includes('Smoke') || weather.weather[0].main.includes('Mist')) {
         return (
             <div className="sportList">
-                <a href="https://www.google.com/search?q=football+equipment&tbm=shop" target="_blank" rel="noopener noreferrer"><img className="topSportIcon"
+                <a href="https://www.google.com/search?q=football+equipment&tbm=shop&tbs=vw:l,mr:1,local_avail:1,ss:55" target="_blank" rel="noopener noreferrer"><img className="topSportIcon"
                     src={football}
                     alt='Icon'
 
