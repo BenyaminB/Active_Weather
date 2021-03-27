@@ -50,26 +50,52 @@ function App() {
   const [timezone, setTimezone] = useState("Europe/London");
 
   const fetchWeather = async () => {
+    const successCallback = async (position) => {
+      var lat = position.coords.latitude;
+      var lon = position.coords.longitude;
 
-    const LocationData = await fetch(
-      `${locationApi.base}${locationApi.key}`
-    );
+      const WeatherData = await fetch(
+        `${api.base}weather?lat=${lat}&lon=${lon}&units=metric&appid=${api.key}`
+      );
 
-    const location = await LocationData.json();
-    setLocation(location);
+      const weather = await WeatherData.json();
+      setWeather(weather);
 
-
-    const WeatherData = await fetch(
-      `${api.base}weather?q=${location.city}&units=metric&APPID=${api.key}`
-    );
-
-    const weather = await WeatherData.json();
-    setWeather(weather);
-
-    if (weather.coord) {
-      getWeather(weather.coord.lat, weather.coord.lon);
+      if (weather.coord) {
+        getWeather(weather.coord.lat, weather.coord.lon);
+      }
     }
+
+
+    const errorCallback = (error) => {
+      console.error(error)
+    }
+
+    const location = navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
+    setLocation(location);
   }
+
+  // const fetchWeather = async () => {
+
+  //   const LocationData = await fetch(
+  //     `${locationApi.base}${locationApi.key}`
+  //   );
+
+  //   const location = await LocationData.json();
+  //   setLocation(location);
+
+
+  //   const WeatherData = await fetch(
+  //     `${api.base}weather?q=${location.city}&units=metric&APPID=${api.key}`
+  //   );
+
+  //   const weather = await WeatherData.json();
+  //   setWeather(weather);
+
+  //   if (weather.coord) {
+  //     getWeather(weather.coord.lat, weather.coord.lon);
+  //   }
+  // }
 
   const search = evt => {
     if (evt.key === "Enter") {
