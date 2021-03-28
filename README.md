@@ -1,5 +1,5 @@
 # Active Weather
-### Group 21
+### ~ Group 12
 
 Template used: [Create React App](https://github.com/facebook/create-react-app).
 
