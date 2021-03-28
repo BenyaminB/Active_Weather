@@ -33,11 +33,39 @@ const BoxContainer = styled.div`
 
 function App() {
 
+  const [location, setLocation] = useState();
+
+  // used to fetch the users current location when allowed
   useEffect(() => {
+    const fetchWeather = async () => {
+      const successCallback = async (position) => {
+        var lat = position.coords.latitude;
+        var lon = position.coords.longitude;
+
+        const WeatherData = await fetch(
+          `${api.base}weather?lat=${lat}&lon=${lon}&units=metric&appid=${api.key}`
+        );
+
+        const weather = await WeatherData.json();
+        setWeather(weather);
+
+        if (weather.coord) {
+          getWeather(weather.coord.lat, weather.coord.lon);
+        }
+      }
+
+      const errorCallback = (error) => {
+        console.error(error)
+      }
+
+      const location = navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
+      setLocation(location);
+    }
+
     fetchWeather();
   }, []);
 
-  const [location, setLocation] = useState();
+
   const [query, setQuery] = useState('');
   const [weather, setWeather] = useState({});
   const [isOpen, setIsOpen] = useState(false);
@@ -45,31 +73,7 @@ function App() {
   const [daily, setDaily] = useState([]);
   const [timezone, setTimezone] = useState("Europe/London");
 
-  // used to fetch the users current location when allowed
-  const fetchWeather = async () => {
-    const successCallback = async (position) => {
-      var lat = position.coords.latitude;
-      var lon = position.coords.longitude;
 
-      const WeatherData = await fetch(
-        `${api.base}weather?lat=${lat}&lon=${lon}&units=metric&appid=${api.key}`
-      );
-
-      const weather = await WeatherData.json();
-      setWeather(weather);
-
-      if (weather.coord) {
-        getWeather(weather.coord.lat, weather.coord.lon);
-      }
-    }
-
-    const errorCallback = (error) => {
-      console.error(error)
-    }
-
-    const location = navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
-    setLocation(location);
-  }
 
   // takes in the city typed in by the user to display the weather over there
   const search = evt => {
