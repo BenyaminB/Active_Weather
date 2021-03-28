@@ -3,16 +3,12 @@ import styled from "styled-components";
 import React, { useState, useEffect } from 'react';
 import { currentWeatherIcon, currentHourlyIcon, TodaysTopSport, getDailyIcon, numberOneSuggested, numberTwoSuggested, numberThreeSuggested } from './common.js';
 
-const locationApi = {
-  key: "e18cd550-7ab3-11eb-b603-3d466becf114",
-  base: "https://geolocation-db.com/json/"
-}
-
 const api = {
   key: "6c91341b4c2a841ddae2e208e7da2de4",
   base: "https://api.openweathermap.org/data/2.5/"
 }
 
+//containers created to give the app an iphone style
 const AppContainer = styled.div`
     width: 100%;
     min-height: 100%;
@@ -49,6 +45,7 @@ function App() {
   const [daily, setDaily] = useState([]);
   const [timezone, setTimezone] = useState("Europe/London");
 
+  // used to fetch the users current location when allowed
   const fetchWeather = async () => {
     const successCallback = async (position) => {
       var lat = position.coords.latitude;
@@ -66,7 +63,6 @@ function App() {
       }
     }
 
-
     const errorCallback = (error) => {
       console.error(error)
     }
@@ -75,28 +71,7 @@ function App() {
     setLocation(location);
   }
 
-  // const fetchWeather = async () => {
-
-  //   const LocationData = await fetch(
-  //     `${locationApi.base}${locationApi.key}`
-  //   );
-
-  //   const location = await LocationData.json();
-  //   setLocation(location);
-
-
-  //   const WeatherData = await fetch(
-  //     `${api.base}weather?q=${location.city}&units=metric&APPID=${api.key}`
-  //   );
-
-  //   const weather = await WeatherData.json();
-  //   setWeather(weather);
-
-  //   if (weather.coord) {
-  //     getWeather(weather.coord.lat, weather.coord.lon);
-  //   }
-  // }
-
+  // takes in the city typed in by the user to display the weather over there
   const search = evt => {
     if (evt.key === "Enter") {
       fetch(`${api.base}weather?q=${query}&units=metric&APPID=${api.key}`)
@@ -111,6 +86,7 @@ function App() {
     }
   }
 
+  //used to call the One call api which uses the lat and lon values
   function getWeather(lat, lon) {
     fetch(`${api.base}onecall?lat=${lat}&lon=${lon}&exclude=minutlely,alerts&units=metric&APPID=${api.key}`)
       .then(res => res.json())
@@ -134,26 +110,6 @@ function App() {
     return `${hourTime}`
   }
 
-  // const dateBuilder = (d) => {
-  //   let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-  //   let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-
-  //   let day = days[d.getDay()];
-  //   let date = d.getDate();
-  //   let month = months[d.getMonth()];
-  //   let year = d.getFullYear();
-
-  //   return `${day} ${date} ${month} ${year}`
-  // }
-
-  // const getTime = (t) => {
-
-  //   let dateObj = new Date(t.dt * 1000);
-  //   let hour = dateObj.getUTCHours();
-
-  //   return `${hour}`
-
-  // }
 
   return (
     <AppContainer>
@@ -233,8 +189,6 @@ function App() {
                     {/* top sport displayed based on todays weather  */}
                     <div className="topIconContainer">
                       {TodaysTopSport(weather)}
-
-
                     </div>
                   </div>
                 </div>

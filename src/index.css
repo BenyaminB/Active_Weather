@@ -25,35 +25,30 @@ body {
   -moz-osx-font-smoothing: grayscale;
   
 }
+
+/* --------------------------------------------------------- APP BACKGROUND DEPENDING ON TIME ------------------------------------------------ */
 .app {
   background-image: url('./assets/sun.jpeg');
   background-size: cover;
   background-position: top center;
-  /* transition: 0.4 ease; */
-
 }
 
 .app-wrap{
   display:flex;
   flex-direction: column;
   min-height: 780px;
-  
-
 }
+
 .app.morning {
   background-image: url('./assets/morningtime.jpeg');
   background-size: cover;
   background-position: top center;
-  /* transition: 0.1 ease; */
-
 }
 
 .app.night {
   background-image: url('./assets/nightime.jpeg');
   background-size: cover;
   background-position: top center;
-  /* transition: 0.1 ease; */
-
 }
 
 
@@ -61,14 +56,13 @@ main {
   min-height: 780px;
   background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.75));
   padding: 25px;
-
 }
+
  /* -------------------------------------------- SEARCH CSS  ------------------------------------------------------ */
 .search-box {
   width: 100%;
   padding: 30px 15px 15px;
   align-items: center;
-  
 }
 
 .search-box .search-bar {
@@ -107,7 +101,6 @@ main {
   padding-bottom: 0.1em;
   font-weight: 500;
   text-align: center;
-  /* text-shadow: 3px 3px rgba(50, 50, 70, 0.5); */
 }
 
 .location-box .date {
@@ -136,13 +129,11 @@ main {
   padding-top: 0.05em;
   font-weight:600;
   text-align: center;
-  /* text-shadow: 3px 3px rgba(50, 50, 70, 0.5); */
 }
 
 
 .weather-box .description {
   color: #FFF;
-  /* display: block; */
   text-align: center;
   font-style: italic;
   margin-top:0;
@@ -154,7 +145,6 @@ main {
 
 .tempIcon{
   width: 140px;
-  /* float:left; */
   padding-left:1.5em;
   padding-top:0.4em;
   font-family: "Poppins";
@@ -183,7 +173,7 @@ main {
  /* --------------------------------------------------- HOURLY WEATHER ------------------------------------------------------ */
 
  .hourlyWeather{
-  /* outline: 5px dotted green; */
+
   width:100%;
   overflow: auto;
   padding-bottom: -0.5em;
@@ -198,7 +188,6 @@ main {
 
 .eachHour{
   display: inline-block;
-  /* outline: 5px dotted green; */
   color: white;
   text-align: center;
   padding: 10px;
@@ -218,7 +207,6 @@ main {
 
 .hourlyIcon{
   width: 3em;
-  /* outline: 5px dotted green; */
   height: 3em;
   margin-top:-1.25em;
   padding: 0em;
@@ -275,19 +263,7 @@ main {
 
  /* -------------------------------------------- WEEKLY WEATHER FORECAST  ------------------------------------------------------ */
 
-
-/* .weekForecast{
-  margin-top:2em;
-  height: 20vh;
-  width: 95%;
-  color: white;
-  margin-left: 10px;
-  outline: 5px dotted green;
-} */
-
-
 .weekForecast{
-  /* outline: 5px dotted green; */
   font-size:80%;
   width:90%;
   overflow: hidden;
@@ -298,23 +274,19 @@ main {
   color: white;
   white-space: nowrap;
   font-style: italic;
-  
 }
 
 .eachDay{
   display: inline-block;
-  /* outline: 5px dotted green; */
   color: white;
   text-align: center;
   padding: 8px;
   text-decoration: none;
   margin-top:-3.5em;
-
 }
 
 
 .todaysH{
-  /* outline: 5px dotted green; */
   margin-top: -1em;
   font-size:85%;
   color: white;
@@ -323,7 +295,6 @@ main {
 }
 
 .todaysL{
-  /* outline: 5px dotted green; */
   margin-top: -1em;
   font-size:85%;
   color: white;
@@ -333,22 +304,11 @@ main {
 
 .dailyIcon{
   width: 2.25em;
-  /* outline: 5px dotted green; */
   height: 2.25em;
   margin-top:-0.5em;
   padding: 0em;
   display:inline;
 }
-
-/* .weekForecast p{
-  display: inline;
-  color: white;
-  text-align: center;
-  padding: 5px;
-  font: 10px;
-  text-decoration: none;
-
-} */
 
  /* --------------------------------------------- TOGGLE (SUGGESTED SPORTS) ------------------------------------------------------ */
 
@@ -400,7 +360,6 @@ main {
   padding-bottom: 0.75em;
   font-style: italic;
   font-size: 110%;
-  /* text-decoration: underline */
 }
 .toggleHeadingTop{
   padding-top: 3em;
@@ -409,8 +368,6 @@ main {
   width: 100%;
   font-style: italic;
   font-size: 110%;
-
-  /* text-decoration: underline; */
 }
 
 
@@ -422,24 +379,15 @@ main {
 .sportName{
   color:white;
   font-size: 20px;
-  
-  
-
 }
 
 .sportIcon{
   width:80px;
   padding-left: 2.5em;
   vertical-align:middle;
-  
-
 }
 
 .sportList{
    margin-top:-0.5em;
 }
-/* 
-.suggestions{
-  margin-top: 1em;
-} */
 
