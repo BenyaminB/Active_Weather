@@ -28,7 +28,7 @@ body {
 
 /* --------------------------------------------------------- APP BACKGROUND DEPENDING ON TIME ------------------------------------------------ */
 .app {
-  background-image: url('./assets/sun.jpeg');
+  background-image: url('./assets/morningtime.jpeg');
   background-size: cover;
   background-position: top center;
 }
