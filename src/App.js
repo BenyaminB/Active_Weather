@@ -1,7 +1,7 @@
 import arrow from './assets/arrow.png';
 import styled from "styled-components";
 import React, { useState, useEffect } from 'react';
-import { currentWeatherIcon, currentHourlyIcon, TodaysTopSport, getDailyIcon, numberOneSuggested, numberTwoSuggested, numberThreeSuggested } from './common.js';
+import { currentWeatherIcon, currentHourlyIcon, TodaysTopSport, getDailyIcon, numberOneSuggested, numberTwoSuggested, numberThreeSuggested } from './components.js';
 
 const api = {
   key: "6c91341b4c2a841ddae2e208e7da2de4",
